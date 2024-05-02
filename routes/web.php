@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('/registered', [LandingPageController::class, 'registered'])->name('registered');
 
-Route::prefix('/admin')->name('admin.')->group(function () {
+Route::prefix('/cms')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
