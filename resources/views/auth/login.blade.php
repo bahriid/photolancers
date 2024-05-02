@@ -14,14 +14,14 @@
                                 @csrf
                             <div class="form-group">
                                 <label class="form-label" for="input-1">Email address *</label>
-                                <input class="form-control" id="input-1" type="text" required="" name="email" placeholder="great@photographer.com">
+                                <input class="form-control" id="input-1" value="admin@gmail.com" type="text" required="" name="email" placeholder="great@photographer.com">
                                 @error('email')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="input-4">Password *</label>
-                                <input class="form-control" id="input-4" type="password" required="" name="password" placeholder="************">
+                                <input class="form-control" id="input-4" type="password"  value="password" required="" name="password" placeholder="************">
                                 @error('password')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
