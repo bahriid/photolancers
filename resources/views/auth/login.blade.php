@@ -16,18 +16,14 @@
                                 <label class="form-label" for="input-1">Email address *</label>
                                 <input class="form-control" id="input-1" type="text" required="" name="email" placeholder="great@photographer.com">
                                 @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="input-4">Password *</label>
                                 <input class="form-control" id="input-4" type="password" required="" name="password" placeholder="************">
                                 @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="login_footer form-group d-flex justify-content-between">

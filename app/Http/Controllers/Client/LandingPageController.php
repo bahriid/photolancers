@@ -13,4 +13,11 @@ class LandingPageController extends Controller
 
         return view('client/landing/index')->with('data', $data);
     }
+
+    public function registered()
+    {
+        $data = [];
+
+        return view('client/landing/registered')->with('data', $data);
+    }
 }
