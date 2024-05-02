@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('role')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('status')->default('waiting_approval');
             $table->rememberToken();
             $table->timestamps();
         });

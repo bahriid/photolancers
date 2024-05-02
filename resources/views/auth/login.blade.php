@@ -10,14 +10,25 @@
                             <h2 class="mt-10 mb-5 text-brand-1">Member Login</h2>
                             <p class="font-sm text-muted mb-30">Access to all features. No credit card required.</p>
                         </div>
-                        <form class="login-register text-start mt-20" action="#">
+                            <form method="POST" action="{{ route('login') }}" class="login-register text-start mt-20" >
+                                @csrf
                             <div class="form-group">
                                 <label class="form-label" for="input-1">Email address *</label>
-                                <input class="form-control" id="input-1" type="text" required="" name="fullname" placeholder="Steven Job">
+                                <input class="form-control" id="input-1" type="text" required="" name="email" placeholder="great@photographer.com">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="input-4">Password *</label>
                                 <input class="form-control" id="input-4" type="password" required="" name="password" placeholder="************">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="login_footer form-group d-flex justify-content-between">
                                 <label class="cb-container">

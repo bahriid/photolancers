@@ -14,6 +14,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/imgs/template/favicon.svg')}}">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <title>Photolancers - A Place for Photographic Freelancers </title>
+    @yield('style')
 </head>
 <body>
 <div id="preloader-active">
@@ -162,5 +163,6 @@
 <script src="assets/js/plugins/swiper-bundle.min.js"></script>
 <script src="assets/js/plugins/counterup.js"></script>
 <script src="assets/js/main.js?v=4.1"></script>
+@yield('script')
 </body>
 </html>

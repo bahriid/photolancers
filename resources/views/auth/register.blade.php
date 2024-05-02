@@ -4,44 +4,227 @@
         <section class="pt-100 login-register">
             <div class="container">
                 <div class="row login-register-cover">
-                    <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
+                    <div class="col-md-8 col-sm-12 mx-auto">
                         <div class="text-center">
                             <p class="font-sm text-brand-2">Register </p>
                             <h2 class="mt-10 mb-5 text-brand-1">Start for free Today</h2>
-                            <p class="font-sm text-muted mb-30">Access to all features. No credit card required.</p>
+                            <p class="font-sm text-muted mb-30">Your application is subject to review. You can login
+                                soon after we approve your application the latest by 3 working days. Check your
+                                registered e-mail for further information and thanks for your interest to join The
+                                Photolancers!</p>
                         </div>
-                        <form class="login-register text-start mt-20" action="#">
-                            <div class="form-group">
-                                <label class="form-label" for="input-1">Full Name *</label>
-                                <input class="form-control" id="input-1" type="text" required="" name="fullname" placeholder="Steven Job">
+                        <form class="login-register text-start mt-20 row" method="POST"
+                              action="{{ route('register') }}">
+                            @csrf
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-1">Full Name *</label>
+                                    <input class="form-control" id="input-1" type="text" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="input-2">Email *</label>
-                                <input class="form-control" id="input-2" type="email" required="" name="emailaddress" placeholder="stevenjob@gmail.com">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-2">Email *</label>
+                                    <input class="form-control" id="input-2" type="email" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="input-4">Password *</label>
-                                <input class="form-control" id="input-4" type="password" required="" name="password" placeholder="************">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-3">Password *</label>
+                                    <input class="form-control" id="input-3" type="password" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="input-5">Re-Password *</label>
-                                <input class="form-control" id="input-5" type="password" required="" name="re-password" placeholder="************">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-4">Repeat Password *</label>
+                                    <input class="form-control" id="input-4" type="password" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
                             </div>
+
+                            <div class="col-12">
+                                <div class="text-start mb-10 mt-10 pt-10 pb-10">Your Personal Information</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-5">Identity Number (KTP) *</label>
+                                    <input class="form-control" id="input-5" type=""" required="" name="fullname"
+                                    placeholder="Steven Job">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-6">NPWP</label>
+                                    <input class="form-control" id="input-6" type=""" required="" name="fullname"
+                                    placeholder="Steven Job">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-7">Phone Number *</label>
+                                    <input class="form-control" id="input-7" type="text" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="datepicker">Date Of Birth *</label>
+                                    <input type="text" class="form-control" id="datepicker" name="datepicker"
+                                           placeholder="Pick a date"/>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-8">Your Photo *</label>
+                                    <input class="form-control" id="input-8" type="file" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-9">Full Address *</label>
+                                    <textarea rows="5" id="input-9" class="font-sm color-text-paragraph-2"
+                                              name="message" placeholder="Tell us about yourself"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-10">Province *</label>
+                                    <select class="form-select form-control" aria-label="Default select example"
+                                            id="input-10">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-11">City *</label>
+                                    <select class="form-select form-control" aria-label="Default select example"
+                                            id="input-11">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="text-start mb-10 mt-10 pt-10 pb-10">Your Bank Information</div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-12">Bank Name*</label>
+                                    <select class="form-select form-control" aria-label="Default select example"
+                                            id="input-12">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-13">Bank Account Name *</label>
+                                    <input class="form-control" id="input-13" type="password" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-14">Bank Account Number *</label>
+                                    <input class="form-control" id="input-14" type="password" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="text-start mb-10 mt-10 pt-10 pb-10">Your Social Media</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-15">Instagram</label>
+                                    <input class="form-control" id="input-15" type="password" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-16">Facebook</label>
+                                    <input class="form-control" id="input-16" type="password" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-17">Twitter</label>
+                                    <input class="form-control" id="input-17" type="password" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="input-18">Others</label>
+                                    <input class="form-control" id="input-18" type="password" required="" name="fullname"
+                                           placeholder="Steven Job">
+                                </div>
+                            </div>
+
                             <div class="login_footer form-group d-flex justify-content-between">
                                 <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Agree our terms and policy</span><span class="checkmark"></span>
+                                    <input type="checkbox"><span
+                                        class="text-small">Agree our terms and policy</span><span
+                                        class="checkmark"></span>
                                 </label><a class="text-muted" href="/frontend/page-contact">Lean more</a>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-brand-1 hover-up w-100" type="submit" name="login">Submit &amp; Register</button>
+                                <button class="btn btn-brand-1 hover-up w-100" type="submit" name="login">Submit &amp;
+                                    Register
+                                </button>
                             </div>
-                            <div class="text-muted text-center">Already have an account? <a href="{{route('login')}}">Sign in</a></div>
+                            <div class="text-muted text-center">Already have an account? <a href="{{route('login')}}">Sign
+                                    in</a></div>
                         </form>
                     </div>
-                    <div class="img-1 d-none d-lg-block"><img class="shape-1" src="assets/imgs/page/login-register/img-1.svg" alt="JobBox"></div>
+                    <div class="img-1 d-none d-lg-block"><img class="shape-1"
+                                                              src="assets/imgs/page/login-register/img-1.svg"
+                                                              alt="JobBox"></div>
                     <div class="img-2"><img src="assets/imgs/page/login-register/img-2.svg" alt="JobBox"></div>
                 </div>
             </div>
         </section>
     </main>
+@endsection
+
+@section('script')
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+
+    <script>
+        $("#datepicker").flatpickr({
+            altInput: true,
+            altFormat: "F j, Y",
+            dateFormat: "Y-m-d",
+        });
+    </script>
+@endsection
+
+@section('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <style>
+        .form-control:disabled, .form-control[readonly] {
+            background-color: #fff;
+        }
+
+        #input-8 {
+            line-height: 25px;
+        }
+    </style>
 @endsection
