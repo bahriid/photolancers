@@ -60,13 +60,13 @@ class RegisterController extends Controller
             'npwp' => ['nullable', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'date_of_birth' => ['required', 'string', 'max:255'],
-            'photo' => ['required', 'file'],
+            'photo' => ['required', 'image','mimes:jpg,png,jpeg', 'max:1024'],
             'address' => ['required', 'string', 'max:255'],
             'province_id' => ['required', 'integer', 'max:255'],
             'city_id' => ['required', 'integer', 'max:255'],
             'bank_name' => ['required', 'string', 'max:255'],
-            'bank_account_name' => ['required', 'string', 'email', 'max:255'],
-            'bank_account_number' => ['required', 'string', 'email', 'max:255'],
+            'bank_account_name' => ['required', 'string', 'max:255'],
+            'bank_account_number' => ['required', 'string', 'max:255'],
             'instagram' => ['required', 'string', 'string', 'max:255'],
             'facebook' => ['required', 'string', 'string', 'max:255'],
             'twitter' => ['required', 'string', 'string', 'max:255'],
@@ -87,15 +87,17 @@ class RegisterController extends Controller
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
-                'type' => 'photographer',
+                'role' => 'photographer',
             ]);
+
+            $image = Helpers::uploadToStorage($data['photo'], $data['name'], 'photo');
 
             Photographer::create([
                 'user_id' => $user->id,
                 'identity_number' => $data['identity_number'],
                 'npwp' => $data['npwp'],
                 'phone' => $data['phone'],
-                'photo' => $data['photo'],
+                'photo' => $image,
                 'date_of_birth' => $data['date_of_birth'],
 
                 'headline' => $data['headline'],
@@ -103,7 +105,7 @@ class RegisterController extends Controller
                 'instagram' => $data['instagram'],
                 'facebook' => $data['facebook'],
                 'twitter' => $data['twitter'],
-                'other' => $data['other'],
+                'portofolio' => $data['other'],
 
                 'address' => $data['address'],
                 'province_id' => $data['province_id'],

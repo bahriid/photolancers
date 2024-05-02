@@ -90,6 +90,25 @@
                                 <span class="menu-title ms-5">Kategori Paket</span>
                             </span>
                         </a>
+
+                        <a href="{{ route('admin.photographer') }}"
+                           class="menu-item here show menu-accordion">
+                            <span class="menu-link">
+                                <span class="menu-title ms-5">Photographers</span>
+                            </span>
+                        </a>
+                        <a href="{{ route('admin.photographer') }}"
+                           class="menu-item here show menu-accordion">
+                            <span class="menu-link">
+                                <span class="menu-title ms-5">Packages</span>
+                            </span>
+                        </a>
+                        <a href="{{ route('admin.photographer') }}"
+                           class="menu-item here show menu-accordion">
+                            <span class="menu-link">
+                                <span class="menu-title ms-5">Blog</span>
+                            </span>
+                        </a>
                     </div>
                     <!--end::Menu-->
                 </div>
@@ -110,10 +129,10 @@
                         <!--begin::User info-->
                         <div class="ms-2">
                             <!--begin::Name-->
-                            <a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bold lh-1">Paul Melone</a>
+                            <a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bold lh-1">{{auth()->user()->name}}</a>
                             <!--end::Name-->
                             <!--begin::Major-->
-                            <span class="text-muted fw-semibold d-block fs-7 lh-1">Python Dev</span>
+                            <span class="text-muted fw-semibold d-block fs-7 lh-1">{{ucfirst(auth()->user()->role)}}</span>
                             <!--end::Major-->
                         </div>
                         <!--end::User info-->
@@ -143,12 +162,12 @@
                                     <!--end::Avatar-->
                                     <!--begin::Username-->
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bold d-flex align-items-center fs-5">Max Smith
+                                        <div class="fw-bold d-flex align-items-center fs-5">{{auth()->user()->name}}
                                             <span
                                                 class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span>
                                         </div>
                                         <a href="#"
-                                           class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</a>
+                                           class="fw-semibold text-muted text-hover-primary fs-7">{{auth()->user()->email}}</a>
                                     </div>
                                     <!--end::Username-->
                                 </div>

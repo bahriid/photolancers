@@ -4,32 +4,20 @@
 @section('content')
     @include('layouts.notifications')
     <div class="card">
-        <div class="card-header border-0 pt-6">
-            <div class="card-title">
-                <a type="button" class="btn btn-primary" href="{{ route('admin.category.create') }}">
-                    <span class="svg-icon svg-icon-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
-                                  transform="rotate(-90 11.364 20.364)" fill="black" />
-                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-                        </svg>
-                    </span>Create Category
-                </a>
-            </div>
-            <div class="card-toolbar">
-            </div>
-        </div>
         <!--begin::Card body-->
-        <div class="card-body py-6">
+        <div class="card-body py-10">
             <!--begin::Table-->
-            <table class="table align-middle table-row-dashed fs-6 gy-5 " id="table_category">
+            <table class="table align-middle table-row-dashed fs-6 gy-5 " id="table_photographer">
                 <!--begin::Table head-->
                 <thead>
                 <!--begin::Table row-->
                 <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                     <th>Created At</th>
-                    <th>Category Name</th>
-                    <th>Action</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th></th>
                 </tr>
                 <!--end::Table row-->
                 </thead>
@@ -48,12 +36,13 @@
 @section('script')
     <script src="{{ url('admin/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script>
-        $("#table_category").DataTable({
+        $("#table_photographer").DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('admin.category.data') }}",
+            ajax: "{{ route('admin.photographer.data') }}",
             columnDefs: [{
-                targets: [0, 1, 2],
+                targets: [0, 1, 2,3,4,5],
+                // width : '160px',
             }, ],
             lengthMenu: [
                 [10, 25, 50, 100, -1],
@@ -64,7 +53,16 @@
                     data: 'created_at',
                 },
                 {
-                    data: 'name'
+                    data: 'image'
+                },
+                {
+                    data: 'user.name'
+                },
+                {
+                    data: 'user.email'
+                },
+                {
+                    data: 'phone'
                 },
                 {
                     data: 'action',

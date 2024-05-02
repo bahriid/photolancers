@@ -2,6 +2,10 @@
 
 namespace App\Utilities;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 class Helpers
 {
     public static function errorRedirect($routeName = null, $message = null, $params = [])
@@ -18,4 +22,24 @@ class Helpers
         return redirect()->route($routeName, $params)->with('success', $message)->send();
     }
 
+    public static function uploadToStorage($image, $name, $dir, $delete = false, $old_image = null)
+    {
+        if ($delete) {
+            self::deleteFromStorage($old_image, $dir);
+        }
+        $name = Str::slug($name, '_').'_'.now()->timestamp.'.'.$image->getClientOriginalExtension();
+        $image->storeAs('public/'.$dir, $name);
+        return url('storage/'.$dir.'/'.$name);
+    }
+
+    public static function deleteFromStorage($old_image, $dir)
+    {
+        try {
+            $explode_url = explode("//", $old_image, 2)[1];
+            $remove_protocol = explode("/", $explode_url);
+            $old_image = Arr::last($remove_protocol);
+            Storage::delete('public/'.$dir.'/'.$old_image);
+        } catch (\Throwable $th) {
+        }
+    }
 }

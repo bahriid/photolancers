@@ -13,7 +13,7 @@
                                 registered e-mail for further information and thanks for your interest to join The
                                 Photolancers!</p>
                         </div>
-                        <form class="login-register text-start mt-20 row" method="POST"
+                        <form class="login-register text-start mt-20 row" method="POST" enctype="multipart/form-data"
                               action="{{ route('register') }}">
                             @csrf
                             <div class="col-6">

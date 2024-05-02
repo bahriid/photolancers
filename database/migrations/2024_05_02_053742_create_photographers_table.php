@@ -29,13 +29,13 @@ return new class extends Migration
             $table->string('twitter')->nullable();
             $table->string('portofolio')->nullable();
 
-            $table->string('bank');
+            $table->string('bank_name');
             $table->string('bank_account_name');
             $table->string('bank_account_number');
 
             $table->string('address')->nullable();
-            $table->unsignedBigInteger('province')->nullable();
-            $table->unsignedBigInteger('city')->nullable();
+            $table->unsignedBigInteger('province_id')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
             $table->timestamps();
         });
     }
