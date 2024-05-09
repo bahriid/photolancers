@@ -18,22 +18,43 @@
                                         class="d-none d-lg-block"> capturing memories
                                 </div>
                                 <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
-                                    <form>
+                                    <form action="{{route('package.index')}}">
                                         <div class="box-industry">
-                                            <select class="form-input mr-10 select-active input-industry">
+                                            <select class="form-input mr-10 select-active input-industry" name="category">
+                                                <option
+                                                    value="All"
+                                                    @if(request()->get('category') == '')
+                                                        selected="selected"
+                                                    @endif
+                                                >All Category</option>
                                                 @foreach($data['categories'] as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    <option
+                                                        value="{{$category->id}}"
+                                                        @if(request()->get('category') == $category->id)
+                                                            selected="selected"
+                                                        @endif
+                                                    >{{$category->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <select class="form-input mr-10 select-active">
+                                        <select class="form-input mr-10 select-active" name="province">
+                                            <option
+                                                value="All"
+                                                @if(request()->get('province') == '')
+                                                    selected="selected"
+                                                @endif
+                                            >All Province</option>
                                             @foreach($data['provinces'] as $province)
-                                                <option value="{{$province->id}}">{{$province->name}}</option>
+                                                <option value="{{$province->id}}"
+                                                        @if(request()->get('province') == $province->id)
+                                                            selected="selected"
+                                                    @endif
+                                                >{{$province->name}}</option>
                                             @endforeach
                                         </select>
-                                        <input class="form-input input-keysearch mr-10" type="number"
+                                        <input class="form-input input-keysearch mr-10" type="number" name="budget"
                                                placeholder="Your Budget... ">
-                                        <button class="btn btn-default btn-find font-sm"></button>
+                                        <button class="btn btn-default btn-find font-sm" type="submit"></button>
                                     </form>
                                 </div>
                                 <div class="list-tags-banner mt-60 wow animate__animated animate__fadeInUp"
