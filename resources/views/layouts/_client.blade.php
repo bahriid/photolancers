@@ -36,10 +36,10 @@
                 <nav class="nav-main-menu">
                     <ul class="main-menu">
                         <li>
-                            <a class="active" href="{{route('home')}}">Home</a>
+                            <a class="{{request()->segment(1) == '' ? 'active' : ''}}" href="{{route('home')}}">Home</a>
                         </li>
                         <li>
-                            <a href="jobs-grid.html">Packages</a>
+                            <a class="{{request()->segment(1) == 'packages' ? 'active' : ''}}" href="{{route('package.index')}}">Packages</a>
                         </li>
                         <li>
                             <a href="companies-grid.html">Photographers</a>
