@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('photographers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('about');
+            $table->string('photos');
             $table->string('identity_number');
             $table->string('phone');
             $table->string('photo');
@@ -28,10 +30,6 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('portofolio')->nullable();
-
-            $table->string('bank_name');
-            $table->string('bank_account_name');
-            $table->string('bank_account_number');
 
             $table->string('address')->nullable();
             $table->unsignedBigInteger('province_id')->nullable();

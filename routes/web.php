@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PhotographerController;
 use App\Http\Controllers\Client\LandingPageController;
+use App\Http\Controllers\Client\PackageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ Auth::routes();
 
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('/registered', [LandingPageController::class, 'registered'])->name('registered');
+
+
+Route::get('/package/detail', [PackageController::class, 'show'])->name('package.detail');
 
 Route::prefix('/cms')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

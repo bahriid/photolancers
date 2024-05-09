@@ -29,7 +29,7 @@
         <div class="main-header">
             <div class="header-left">
                 <div class="header-logo"><a class="d-flex" href="{{route('home')}}"><img alt="jobBox"
-                                                                                  src="assets/imgs/template/jobhub-logo.svg"></a>
+                                                                                  src="{{asset('assets/imgs/template/jobhub-logo.svg')}}"></a>
                 </div>
             </div>
             <div class="header-nav">
@@ -104,7 +104,7 @@
     <div class="container">
         <div class="row">
             <div class="footer-col-1 col-md-3 col-sm-12"><a href="{{route('home')}}">
-                    <img alt="jobBox" src="assets/imgs/template/jobhub-logo.svg"></a>
+                    <img alt="jobBox" src="{{asset('assets/imgs/template/jobhub-logo.svg')}}"></a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">Photolancers - A Place for Photographic
                     Freelancers
                 </div>
@@ -149,20 +149,20 @@
         </div>
     </div>
 </footer>
-<script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
-<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-<script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
-<script src="assets/js/plugins/waypoints.js"></script>
-<script src="assets/js/plugins/wow.js"></script>
-<script src="assets/js/plugins/magnific-popup.js"></script>
-<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="assets/js/plugins/select2.min.js"></script>
-<script src="assets/js/plugins/isotope.js"></script>
-<script src="assets/js/plugins/scrollup.js"></script>
-<script src="assets/js/plugins/swiper-bundle.min.js"></script>
-<script src="assets/js/plugins/counterup.js"></script>
-<script src="assets/js/main.js?v=4.1"></script>
+<script src="{{asset('assets/js/vendor/modernizr-3.6.0.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/jquery-migrate-3.3.0.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/waypoints.js')}}"></script>
+<script src="{{asset('assets/js/plugins/wow.js')}}"></script>
+<script src="{{asset('assets/js/plugins/magnific-popup.js')}}"></script>
+<script src="{{asset('assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/select2.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/isotope.js')}}"></script>
+<script src="{{asset('assets/js/plugins/scrollup.js')}}"></script>
+<script src="{{asset('assets/js/plugins/swiper-bundle.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/counterup.js')}}"></script>
+<script src="{{asset('assets/js/main.js?v=4.1')}}"></script>
 @yield('script')
 </body>
 </html>

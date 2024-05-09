@@ -495,7 +495,8 @@
     $(".swiper-group-1").each(function() {
         var swiper_1_items = new Swiper(this, {
             spaceBetween: 30,
-            slidesPerView: 1,
+            slidesPerGroup: 1,
+            slidesPerView: 3,
             loop: true,
             navigation: {
                 nextEl: ".swiper-button-next-1",
@@ -503,6 +504,20 @@
             },
             autoplay: {
                 delay: 10000
+            },
+            breakpoints: {
+                1199: {
+                    slidesPerView: 3
+                },
+                600: {
+                    slidesPerView: 3
+                },
+                350: {
+                    slidesPerView: 2
+                },
+                250: {
+                    slidesPerView: 1
+                }
             }
         });
     });

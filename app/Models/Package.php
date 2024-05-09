@@ -7,16 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Laravolt\Indonesia\Models\City;
 use Laravolt\Indonesia\Models\Province;
 
-class Photographer extends Model
+class Package extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-
-
-    public function user()
+    public function images()
     {
-        return $this->belongsTo(User::class);
+        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function city()
@@ -24,13 +21,13 @@ class Photographer extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function province()
     {
         return $this->belongsTo(Province::class);
-    }
-
-    public function images()
-    {
-        return $this->morphMany('App\Image', 'imageable');
     }
 }

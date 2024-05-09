@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Package;
+use App\Models\Photographer;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
     public function index()
     {
-        $data = [];
+
+        $data['categories'] = Category::withCount('packages')->get();
+        $data['photographers'] = Photographer::with('user')->get()->take(8);
+        $data['provinces'] = \Indonesia::allProvinces();
+        $data['packages'] = Package::get()->take(6);
 
         return view('client/landing/index')->with('data', $data);
     }
