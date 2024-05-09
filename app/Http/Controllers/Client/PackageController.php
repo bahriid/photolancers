@@ -30,8 +30,8 @@ class PackageController extends Controller
             ->when($request->budget, function ($query) use ($request) {
                 $query->where('price', '<=',$request->budget);
             })
-            ->paginate(
-                perPage: 2,
+            ->simplepaginate(
+                perPage: 12,
                 page: $request->page ?? 1
             );
 
