@@ -24,7 +24,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('/registered', [LandingPageController::class, 'registered'])->name('registered');
 
 Route::get('/packages', [PackageController::class, 'index'])->name('package.index');
-Route::get('/packages/detail', [PackageController::class, 'show'])->name('package.detail');
+Route::get('/packages/{id}', [PackageController::class, 'show'])->name('package.detail');
 
 Route::prefix('/cms')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

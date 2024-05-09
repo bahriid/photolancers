@@ -9,10 +9,9 @@ use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
-    public function show()
+    public function show($id)
     {
-        $data = [];
-
+        $data['package'] = Package::where('id',$id)->with('images')->first();
         return view('client/package/detail')->with('data', $data);
     }
 

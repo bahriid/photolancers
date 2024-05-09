@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('photographers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('about');
             $table->string('photos');
             $table->string('identity_number');
             $table->string('phone');

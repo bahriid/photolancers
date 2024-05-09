@@ -35,7 +35,6 @@ class PhotographerSeeder extends Seeder
 
                 $photographer = Photographer::create([
                     'user_id' => $user['id'],
-                    'about' => $faker->realText,
                     'photos' => $faker->imageUrl,
 
                     'identity_number' => '1234123412341234',
@@ -44,7 +43,7 @@ class PhotographerSeeder extends Seeder
                     'photo' => $faker->imageUrl,
                     'date_of_birth' => $faker->date,
 
-                    'headline' => $faker->sentence,
+                    'headline' => $faker->realText,
 
                     'instagram' => $faker->url,
                     'facebook' => $faker->url,

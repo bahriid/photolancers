@@ -76,7 +76,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-block-info">
-                                                <h5><a href="#">{{$package->name}}</a></h5>
+                                                <h5><a href="{{route('package.detail',['id'=>$package->id])}}">{{$package->name}}</a></h5>
                                                 <div class="mt-5">
                                                     <span
                                                         class="card-location mr-15">{{$package->province->name}}, {{$package->city->name}}</span>
@@ -85,7 +85,7 @@
                                                     <div class="row">
                                                         <div class="col-xl-7 col-md-7 mb-2">
                                                             <a class="btn btn-tags-sm mr-5"
-                                                               href="/frontend/jobs-grid">{{$package->category->name}}</a>
+                                                               href="#">{{$package->category->name}}</a>
                                                         </div>
                                                         <div class="col-xl-5 col-md-5 text-lg-end">
                                                     <span class="card-text-price">Rp. {{number_format($package->price - ($package->price * ($package->discount/100)))}}

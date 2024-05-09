@@ -16,6 +16,11 @@ class Package extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
+    public function photographer()
+    {
+        return $this->belongsTo(Photographer::class);
+    }
+
     public function city()
     {
         return $this->belongsTo(City::class);
