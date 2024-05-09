@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PhotographerController;
+use App\Http\Controllers\Client\PhotographerController as PhotographerClientController;
 use App\Http\Controllers\Client\LandingPageController;
 use App\Http\Controllers\Client\PackageController;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,9 @@ Route::get('/registered', [LandingPageController::class, 'registered'])->name('r
 
 Route::get('/packages', [PackageController::class, 'index'])->name('package.index');
 Route::get('/packages/{id}', [PackageController::class, 'show'])->name('package.detail');
+
+Route::get('/photographer', [PhotographerClientController::class, 'index'])->name('photographer.index');
+Route::get('/photographer/{id}', [PhotographerClientController::class, 'show'])->name('photographer.detail');
 
 Route::prefix('/cms')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

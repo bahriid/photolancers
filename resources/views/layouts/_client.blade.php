@@ -42,7 +42,7 @@
                             <a class="{{request()->segment(1) == 'packages' ? 'active' : ''}}" href="{{route('package.index')}}">Packages</a>
                         </li>
                         <li>
-                            <a href="companies-grid.html">Photographers</a>
+                            <a class="{{request()->segment(1) == 'photographer' ? 'active' : ''}}" href="{{route('photographer.index')}}">Photographers</a>
                         </li>
                         <li>
                             <a href="blog-grid.html">Blog</a>

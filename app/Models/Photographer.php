@@ -13,7 +13,6 @@ class Photographer extends Model
 
     protected $guarded = [];
 
-
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -31,6 +30,6 @@ class Photographer extends Model
 
     public function images()
     {
-        return $this->morphMany('App\Image', 'imageable');
+        return $this->morphMany(Image::class, 'imageable');
     }
 }
