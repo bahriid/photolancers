@@ -15,6 +15,15 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <title>Photolancers - A Place for Photographic Freelancers </title>
     @yield('style')
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MD3J61MDMB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MD3J61MDMB');
+    </script>
 </head>
 <body>
 <div id="preloader-active">
