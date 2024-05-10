@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PhotographerController;
+use App\Http\Controllers\Client\BlogController;
 use App\Http\Controllers\Client\PhotographerController as PhotographerClientController;
 use App\Http\Controllers\Client\LandingPageController;
 use App\Http\Controllers\Client\PackageController;
@@ -29,6 +30,9 @@ Route::get('/packages/{id}', [PackageController::class, 'show'])->name('package.
 
 Route::get('/photographer', [PhotographerClientController::class, 'index'])->name('photographer.index');
 Route::get('/photographer/{id}', [PhotographerClientController::class, 'show'])->name('photographer.detail');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.detail');
 
 Route::prefix('/cms')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

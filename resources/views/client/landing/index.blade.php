@@ -105,7 +105,7 @@
                                     <div class="swiper-slide hover-up">
                                         <div class="card-grid-5 card-category hover-up"
                                              style="background-image: url('{{$listCategory['image']}}')"><a
-                                                href="#">
+                                                href="{{route('package.index', ['category' => $listCategory->id ])}}">
                                                 <div class="box-cover-img">
                                                     <div class="content-bottom">
                                                         <h6 class="color-white mb-5">{{$listCategory->name}}</h6>
@@ -223,14 +223,14 @@
                                         </div>
                                     </div>
                                     <div class="card-block-info">
-                                        <h5><a href="#">{{$package->name}}</a></h5>
+                                        <h5><a href="{{route('package.detail', ['id'=>$package->id])}}">{{$package->name}}</a></h5>
                                         <div class="mt-5">
                                             <span class="card-location mr-15">{{$package->province->name}}, {{$package->city->name}}</span>
                                         </div>
                                         <div class="card-2-bottom mt-20">
                                             <div class="row">
                                                 <div class="col-xl-7 col-md-7 mb-2">
-                                                    <a class="btn btn-tags-sm mr-5" href="/frontend/jobs-grid">{{$package->category->name}}</a>
+                                                    <a class="btn btn-tags-sm mr-5" href="{{route('package.index', ['category' => $package->category_id ])}}">{{$package->category->name}}</a>
                                                 </div>
                                                 <div class="col-xl-5 col-md-5 text-lg-end">
                                                     <span class="card-text-price">Rp. {{number_format($package->price - ($package->price * ($package->discount/100)))}}
@@ -246,7 +246,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="text-center mt-10"><a class="btn btn-brand-1 btn-icon-more hover-up">See more </a></div>
+                    <div class="text-center mt-10"><a class="btn btn-brand-1 btn-icon-more hover-up" href="{{route('package.index')}}">See more </a></div>
                 </div>
             </div>
         </section>
@@ -263,13 +263,13 @@
                             <div class="col-xl-3 col-lg-4 col-md-6">
                                 <div class="card-grid-2 hover-up">
                                     <div class="card-grid-2-image-left">
-                                        <div class="card-grid-2-image-rd online">
-                                            <a href="candidate-details.html">
-                                                <figure><img alt="jobBox" src="assets/imgs/page/candidates/user1.png"></figure>
+                                        <div class="card-grid-2-image-rd">
+                                            <a href="{{route('photographer.detail', ['id'=>$photographer->id])}}">
+                                                <figure><img alt="jobBox" src="{{$photographer->photos}}"></figure>
                                             </a>
                                         </div>
                                         <div class="card-profile pt-10">
-                                            <a href="candidate-details.html">
+                                            <a href="{{route('photographer.detail', ['id'=>$photographer->id])}}">
                                                 <h5>{{$photographer->user->name}}</h5>
                                             </a>
                                             <span class="font-xs color-text-mutted" style="font-size: 10px !important;">{{$photographer->province->name}}, {{$photographer->city->name}}</span>
@@ -301,7 +301,7 @@
                     </div>
                     <div class="row mt-40 mb-60">
                         <div class="col-lg-12">
-                            <div class="text-center"><a class="btn btn-brand-1 btn-icon-load mt--30 hover-up" href="blog-grid.html">See More</a></div>
+                            <div class="text-center"><a class="btn btn-brand-1 btn-icon-load mt--30 hover-up" href="{{route('photographer.index')}}">See More</a></div>
                         </div>
                     </div>
                 </div>
@@ -320,57 +320,23 @@
                     <div class="box-swiper style-nav-top">
                         <div class="swiper-container swiper-group-3 swiper">
                             <div class="swiper-wrapper pb-70 pt-5">
+                                @foreach($data['blogs'] as $blog)
+
                                 <div class="swiper-slide">
                                     <div class="card-grid-3 hover-up wow animate__animated animate__fadeIn">
                                         <div class="text-center card-grid-3-image"><a href="#">
                                                 <figure><img alt="jobBox"
-                                                             src="assets/imgs/page/homepage1/img-news1.png"></figure>
+                                                             src="{{$blog->banner}}"></figure>
                                             </a></div>
                                         <div class="card-block-info">
                                             <div class="tags mb-15"><a class="btn btn-tag"
                                                                        href="blog-grid.html">News</a></div>
-                                            <h5><a href="blog-details.html">21 Job Interview Tips: How To Make a Great
-                                                    Impression</a></h5>
-                                            <p class="mt-10 color-text-paragraph font-sm">Our mission is to create the
-                                                world&amp;rsquo;s most sustainable healthcare company by creating
-                                                high-quality healthcare products in iconic, sustainable packaging.</p>
+                                            <h5><a href="blog-details.html">{{$blog->title}}</a></h5>
+                                            <p class="mt-10 color-text-paragraph font-sm">{{\Illuminate\Support\Str::limit($blog->description, 100, ' ...')}}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="card-grid-3 hover-up wow animate__animated animate__fadeIn">
-                                        <div class="text-center card-grid-3-image"><a href="#">
-                                                <figure><img alt="jobBox"
-                                                             src="assets/imgs/page/homepage1/img-news2.png"></figure>
-                                            </a></div>
-                                        <div class="card-block-info">
-                                            <div class="tags mb-15"><a class="btn btn-tag"
-                                                                       href="blog-grid.html">Events</a></div>
-                                            <h5><a href="blog-details.html">39 Strengths and Weaknesses To Discuss in a
-                                                    Job Interview</a></h5>
-                                            <p class="mt-10 color-text-paragraph font-sm">Our mission is to create the
-                                                world&amp;rsquo;s most sustainable healthcare company by creating
-                                                high-quality healthcare products in iconic, sustainable packaging.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card-grid-3 hover-up wow animate__animated animate__fadeIn">
-                                        <div class="text-center card-grid-3-image"><a href="#">
-                                                <figure><img alt="jobBox"
-                                                             src="assets/imgs/page/homepage1/img-news3.png"></figure>
-                                            </a></div>
-                                        <div class="card-block-info">
-                                            <div class="tags mb-15"><a class="btn btn-tag"
-                                                                       href="blog-grid.html">News</a></div>
-                                            <h5><a href="blog-details.html">Interview Question: Why Dont You Have a
-                                                    Degree?</a></h5>
-                                            <p class="mt-10 color-text-paragraph font-sm">Learn how to respond if an
-                                                interviewer asks you why you dont have a degree, and read example
-                                                answers that can help you craft</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="swiper-button-next"></div>

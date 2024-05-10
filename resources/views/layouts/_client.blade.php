@@ -45,7 +45,7 @@
                             <a class="{{request()->segment(1) == 'photographer' ? 'active' : ''}}" href="{{route('photographer.index')}}">Photographers</a>
                         </li>
                         <li>
-                            <a href="blog-grid.html">Blog</a>
+                            <a class="{{request()->segment(1) == 'blog' ? 'active' : ''}}" href="{{route('blog.index')}}">Blog</a>
                         </li>
                     </ul>
                 </nav>

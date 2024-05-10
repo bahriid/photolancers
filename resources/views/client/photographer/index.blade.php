@@ -54,9 +54,9 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6">
                                         <div class="card-grid-2 hover-up">
                                             <div class="card-grid-2-image-left">
-                                                <div class="card-grid-2-image-rd online">
-                                                    <a href="candidate-details.html">
-                                                        <figure><img alt="jobBox" src="assets/imgs/page/candidates/user1.png"></figure>
+                                                <div class="card-grid-2-image-rd">
+                                                    <a href="{{route('photographer.detail', ['id'=> $photographer->id])}}">
+                                                        <figure><img alt="jobBox" src="{{$photographer->photos}}"></figure>
                                                     </a>
                                                 </div>
                                                 <div class="card-profile pt-10">
