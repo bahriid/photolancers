@@ -39,9 +39,8 @@
                         <h3>{{$data['package']->name}}</h3>
                     </div>
                     <div class="col-lg-4 col-md-12 text-lg-end">
-                        <div class="btn btn-apply-icon btn-apply btn-apply-big hover-up" data-bs-toggle="modal"
-                             data-bs-target="#ModalApplyJobForm">Book now
-                        </div>
+                        <a href="https://api.whatsapp.com/send?phone={{$data['package']->photographer->phone}}&text=Hello%20*{{$data['package']->photographer->user->name}}*%2C%20I%20want%20more%20info%20about%20the%20your%20photography%20package%20*{{$data['package']->name}}*" class="btn btn-apply-icon btn-apply btn-apply-big hover-up">Book now
+                        </a>
                     </div>
                 </div>
                 <div class="border-bottom pt-10 pb-10"></div>

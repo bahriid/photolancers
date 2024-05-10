@@ -17,7 +17,7 @@
                             </p>
                         </div>
                         <div class="col-lg-4 col-md-12 text-lg-end"><a class="btn btn-apply btn-apply-big"
-                                                                       href="page-contact.html">Book Now</a></div>
+                                                                       href="https://api.whatsapp.com/send?phone={{$data['photographer']->phone}}&text=Hello%20*{{$data['photographer']->user->name}}*%2C%20I%20am%20interested%20on%20your%20profile%20in%20photolancers.%20Can%20we%20talk%3F">Book Now</a></div>
                     </div>
                 </div>
                 <div class="border-bottom pt-10 pb-10"></div>
