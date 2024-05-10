@@ -84,16 +84,16 @@
                     <nav>
                         <ul class="mobile-menu font-heading">
                             <li>
-                                <a class="active" href="{{route('home')}}">Home</a>
+                                <a class="{{request()->segment(1) == '' ? 'active' : ''}}" href="{{route('home')}}">Home</a>
                             </li>
                             <li>
-                                <a href="jobs-grid.html">Packages</a>
+                                <a class="{{request()->segment(1) == 'packages' ? 'active' : ''}}" href="{{route('package.index')}}">Packages</a>
                             </li>
                             <li>
-                                <a href="companies-grid.html">Photographers</a>
+                                <a class="{{request()->segment(1) == 'photographer' ? 'active' : ''}}" href="{{route('photographer.index')}}">Photographers</a>
                             </li>
                             <li>
-                                <a href="blog-grid.html">Blog</a>
+                                <a class="{{request()->segment(1) == 'blog' ? 'active' : ''}}" href="{{route('blog.index')}}">Blog</a>
                             </li>
                         </ul>
                     </nav>
