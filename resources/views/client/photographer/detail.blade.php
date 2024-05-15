@@ -17,7 +17,8 @@
                             </p>
                         </div>
                         <div class="col-lg-4 col-md-12 text-lg-end"><a class="btn btn-apply btn-apply-big"
-                                                                       href="https://api.whatsapp.com/send?phone={{$data['photographer']->phone}}&text=Hello%20*{{$data['photographer']->user->name}}*%2C%20I%20am%20interested%20on%20your%20profile%20in%20photolancers.%20Can%20we%20talk%3F">Book Now</a></div>
+                                                                       href="https://api.whatsapp.com/send?phone={{$data['photographer']->phone}}&text=Hello%20*{{$data['photographer']->user->name}}*%2C%20I%20am%20interested%20on%20your%20profile%20in%20photolancers.%20Can%20we%20talk%3F">Book
+                                Now</a></div>
                     </div>
                 </div>
                 <div class="border-bottom pt-10 pb-10"></div>
@@ -65,6 +66,20 @@
                     </div>
                 </div>
             </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-12 pl-40 pl-lg-15 mt-lg-30">
+                        <div class="sidebar-border">
+                            <h5 class="f-18 text-center">Instagram Feed</h5>
+                                <iframe style="height: 375px;"
+                                        src="{{$data['photographer']->instagram}}/embed"
+                                        frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
         </section>
         <section class="section-box mt-50 mb-50">
             <div class="container">
@@ -106,7 +121,8 @@
                                                         </div>
                                                         <div class="col-xl-5 col-md-12 text-lg-end">
                                                             <span class="card-text-price">Rp. {{number_format($package->price - ($package->price * ($package->discount/100)))}}
-                                                                <span class="card-text-price" style="color: red;font-size: 10px;text-decoration: line-through;">Rp. {{number_format($package->price)}}</span>
+                                                                <span class="card-text-price"
+                                                                      style="color: red;font-size: 10px;text-decoration: line-through;">Rp. {{number_format($package->price)}}</span>
                                                             </span>
                                                             <span class="text-muted">/ Session</span>
                                                         </div>

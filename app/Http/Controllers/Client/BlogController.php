@@ -23,6 +23,7 @@ class BlogController extends Controller
             ->inRandomOrder()
             ->get()
             ->take(3);
+
         $data['trending'] = Blog::query()
             ->inRandomOrder()
             ->get()

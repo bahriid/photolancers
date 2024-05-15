@@ -19,7 +19,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MD3J61MDMB"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'G-MD3J61MDMB');
@@ -37,8 +41,8 @@
     <div class="container">
         <div class="main-header">
             <div class="header-left">
-                <div class="header-logo"><a class="d-flex" href="{{route('home')}}"><img alt="jobBox"
-                                                                                  src="{{asset('assets/imgs/template/jobhub-logo.svg')}}"></a>
+                <div class="header-logo"><a class="d-flex" href="{{route('home')}}">
+                        <img alt="jobBox" src="{{asset('assets/imgs/template/logo.svg')}}"></a>
                 </div>
             </div>
             <div class="header-nav">
@@ -48,13 +52,16 @@
                             <a class="{{request()->segment(1) == '' ? 'active' : ''}}" href="{{route('home')}}">Home</a>
                         </li>
                         <li>
-                            <a class="{{request()->segment(1) == 'packages' ? 'active' : ''}}" href="{{route('package.index')}}">Packages</a>
+                            <a class="{{request()->segment(1) == 'packages' ? 'active' : ''}}"
+                               href="{{route('package.index')}}">Packages</a>
                         </li>
                         <li>
-                            <a class="{{request()->segment(1) == 'photographer' ? 'active' : ''}}" href="{{route('photographer.index')}}">Photographers</a>
+                            <a class="{{request()->segment(1) == 'photographer' ? 'active' : ''}}"
+                               href="{{route('photographer.index')}}">Photographers</a>
                         </li>
                         <li>
-                            <a class="{{request()->segment(1) == 'blog' ? 'active' : ''}}" href="{{route('blog.index')}}">Blog</a>
+                            <a class="{{request()->segment(1) == 'blog' ? 'active' : ''}}"
+                               href="{{route('blog.index')}}">Blog</a>
                         </li>
                     </ul>
                 </nav>
@@ -84,16 +91,20 @@
                     <nav>
                         <ul class="mobile-menu font-heading">
                             <li>
-                                <a class="{{request()->segment(1) == '' ? 'active' : ''}}" href="{{route('home')}}">Home</a>
+                                <a class="{{request()->segment(1) == '' ? 'active' : ''}}"
+                                   href="{{route('home')}}">Home</a>
                             </li>
                             <li>
-                                <a class="{{request()->segment(1) == 'packages' ? 'active' : ''}}" href="{{route('package.index')}}">Packages</a>
+                                <a class="{{request()->segment(1) == 'packages' ? 'active' : ''}}"
+                                   href="{{route('package.index')}}">Packages</a>
                             </li>
                             <li>
-                                <a class="{{request()->segment(1) == 'photographer' ? 'active' : ''}}" href="{{route('photographer.index')}}">Photographers</a>
+                                <a class="{{request()->segment(1) == 'photographer' ? 'active' : ''}}"
+                                   href="{{route('photographer.index')}}">Photographers</a>
                             </li>
                             <li>
-                                <a class="{{request()->segment(1) == 'blog' ? 'active' : ''}}" href="{{route('blog.index')}}">Blog</a>
+                                <a class="{{request()->segment(1) == 'blog' ? 'active' : ''}}"
+                                   href="{{route('blog.index')}}">Blog</a>
                             </li>
                         </ul>
                     </nav>
@@ -113,7 +124,7 @@
     <div class="container">
         <div class="row">
             <div class="footer-col-1 col-md-3 col-sm-12"><a href="{{route('home')}}">
-                    <img alt="jobBox" src="{{asset('assets/imgs/template/jobhub-logo.svg')}}"></a>
+                    <img alt="jobBox" src="{{asset('assets/imgs/template/logo.svg')}}"></a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">Photolancers - A Place for Photographic
                     Freelancers
                 </div>

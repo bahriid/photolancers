@@ -56,17 +56,12 @@ class RegisterController extends Controller
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
 
-            'identity_number' => ['required', 'string', 'max:255'],
-            'npwp' => ['nullable', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'date_of_birth' => ['required', 'string', 'max:255'],
             'photo' => ['required', 'image','mimes:jpg,png,jpeg', 'max:1024'],
             'address' => ['required', 'string', 'max:255'],
             'province_id' => ['required', 'integer', 'max:255'],
             'city_id' => ['required', 'integer', 'max:255'],
-            'bank_name' => ['required', 'string', 'max:255'],
-            'bank_account_name' => ['required', 'string', 'max:255'],
-            'bank_account_number' => ['required', 'string', 'max:255'],
             'instagram' => ['required', 'string', 'string', 'max:255'],
             'facebook' => ['required', 'string', 'string', 'max:255'],
             'twitter' => ['required', 'string', 'string', 'max:255'],
@@ -94,8 +89,6 @@ class RegisterController extends Controller
 
             Photographer::create([
                 'user_id' => $user->id,
-                'identity_number' => $data['identity_number'],
-                'npwp' => $data['npwp'],
                 'phone' => $data['phone'],
                 'photo' => $image,
                 'date_of_birth' => $data['date_of_birth'],
@@ -110,10 +103,6 @@ class RegisterController extends Controller
                 'address' => $data['address'],
                 'province_id' => $data['province_id'],
                 'city_id' => $data['city_id'],
-
-                'bank_name' => $data['bank_name'],
-                'bank_account_name' => $data['bank_account_name'],
-                'bank_account_number' => $data['bank_account_number'],
             ]);
 
             return Helpers::successRedirect('registered', 'Successfully Register');

@@ -45,7 +45,7 @@ class PhotographerSeeder extends Seeder
 
                     'headline' => $faker->realText,
 
-                    'instagram' => $faker->url,
+                    'instagram' => 'https://www.instagram.com/stevemccurryofficial',
                     'facebook' => $faker->url,
                     'twitter' => $faker->url,
                     'portofolio' => $faker->url,

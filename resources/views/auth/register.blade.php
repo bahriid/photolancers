@@ -71,26 +71,6 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="input-5">Identity Number (KTP) *</label>
-                                    <input class="form-control" id="input-5" type="text" required="" name="identity_number"
-                                    placeholder="Identity Number">
-                                    @error('identity_number')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="input-6">NPWP</label>
-                                    <input class="form-control" id="input-6" type="text" required="" name="npwp"
-                                    placeholder="NPWP">
-                                    @error('npwp')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
                                     <label class="form-label" for="input-7">Phone Number *</label>
                                     <input class="form-control" id="input-7" type="text" required="" name="phone"
                                            placeholder="081212341234">
@@ -159,46 +139,6 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            <div class="col-12">
-                                <div class="text-start mb-10 mt-10 pt-10 pb-10">Your Bank Information</div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label class="form-label" for="input-12">Bank Name*</label>
-                                    <select class="form-select form-control" aria-label="Your bank name"
-                                            id="input-12" name="bank_name">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                    @error('bank_name')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="input-13">Bank Account Name *</label>
-                                    <input class="form-control" id="input-13" type="text" required="" name="bank_account_name"
-                                           placeholder="Your bank account name">
-                                    @error('bank_account_name')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="input-14">Bank Account Number *</label>
-                                    <input class="form-control" id="input-14" type="text" required="" name="bank_account_number"
-                                           placeholder="Your bank account number">
-                                    @error('bank_account_number')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-
                             <div class="col-12">
                                 <div class="text-start mb-10 mt-10 pt-10 pb-10">Your Social Media</div>
                             </div>

@@ -17,11 +17,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('photos');
-            $table->string('identity_number');
             $table->string('phone');
             $table->string('photo');
             $table->string('date_of_birth');
-            $table->string('npwp')->nullable();
 
             $table->text('headline');
 
