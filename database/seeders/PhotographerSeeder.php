@@ -37,8 +37,8 @@ class PhotographerSeeder extends Seeder
                     'user_id' => $user['id'],
                     'photos' => $faker->imageUrl,
 
-                    'identity_number' => '1234123412341234',
-                    'npwp' => '1234123412341234',
+//                    'identity_number' => '1234123412341234',
+//                    'npwp' => '1234123412341234',
                     'phone' => $faker->phoneNumber,
                     'photo' => $faker->imageUrl,
                     'date_of_birth' => $faker->date,
