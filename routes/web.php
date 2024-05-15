@@ -7,6 +7,7 @@ use App\Http\Controllers\Client\BlogController;
 use App\Http\Controllers\Client\PhotographerController as PhotographerClientController;
 use App\Http\Controllers\Client\LandingPageController;
 use App\Http\Controllers\Client\PackageController;
+use App\Http\Controllers\DataController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+
+
+// DataController
+Route::get('/data/provinces', [DataController::class, 'provinces'])->name('data.provinces');
+Route::get('/data/cities/{id}', [DataController::class, 'cities'])->name('data.cities');
 
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('/registered', [LandingPageController::class, 'registered'])->name('registered');

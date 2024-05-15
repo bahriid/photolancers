@@ -60,8 +60,8 @@ class RegisterController extends Controller
             'date_of_birth' => ['required', 'string', 'max:255'],
             'photo' => ['required', 'image','mimes:jpg,png,jpeg', 'max:1024'],
             'address' => ['required', 'string', 'max:255'],
-            'province_id' => ['required', 'integer', 'max:255'],
-            'city_id' => ['required', 'integer', 'max:255'],
+            'province_id' => ['required', 'integer'],
+            'city_id' => ['required', 'integer'],
             'instagram' => ['required', 'string', 'string', 'max:255'],
             'facebook' => ['required', 'string', 'string', 'max:255'],
             'twitter' => ['required', 'string', 'string', 'max:255'],
@@ -78,6 +78,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         try {
+            \DB::beginTransaction();
+
             $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
@@ -105,8 +107,12 @@ class RegisterController extends Controller
                 'city_id' => $data['city_id'],
             ]);
 
+            \DB::commit();
+
             return Helpers::successRedirect('registered', 'Successfully Register');
         }catch (\Exception $e){
+            \DB::rollBack();
+
             return Helpers::errorRedirect($e->getMessage());
         }
     }

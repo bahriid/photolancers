@@ -113,11 +113,8 @@
                                 <div class="form-group">
                                     <label class="form-label" for="input-10">Province *</label>
                                     <select class="form-select form-control" aria-label="Pick a Province"
-                                            id="input-10" name="province_id">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                            id="province" name="province_id" onchange="getCities(this)">
+                                        <option disabled selected>Pilih Provinsi ...</option>
                                     </select>
                                     @error('province_id')
                                     <p class="text-danger">{{ $message }}</p>
@@ -128,11 +125,8 @@
                                 <div class="form-group">
                                     <label class="form-label" for="input-11">City *</label>
                                     <select class="form-select form-control" aria-label="Pick a City"
-                                            id="input-11" name="city_id">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                            id="city" name="city_id">
+                                        <option disabled selected>Pilih Kabupaten/Kota ...</option>
                                     </select>
                                     @error('city_id')
                                     <p class="text-danger">{{ $message }}</p>
@@ -212,6 +206,7 @@
 @section('script')
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
         $("#datepicker").flatpickr({
@@ -219,6 +214,30 @@
             altFormat: "F j, Y",
             dateFormat: "Y-m-d",
         });
+
+        function getProvinces(){
+            axios.get(`{!! route('data.provinces') !!}`).then(({data: provinces}) => {
+                provinces.forEach(province => {
+                    $('#province').append(new Option(province.name, province.id));
+                });
+                console.log(provinces)
+            }).catch(error=> {
+            })
+        }
+
+        function getCities(event){
+            $('#city').html('<option disabled selected>Pilih Kabupaten/Kota ...</option>');
+            const url = `{{ route('data.cities', ['id' => ':id']) }}`.replace(':id', event.value);
+
+            axios.get(url).then(({data}) => {
+                data.cities.forEach(city => {
+                    $('#city').append(new Option(city.name, city.id));
+                });
+            }).catch(error=> {
+            })
+        }
+        getProvinces()
+
     </script>
 @endsection
 
