@@ -28,7 +28,8 @@
                 <!--begin::Table row-->
                 <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                     <th>Created At</th>
-                    <th>Category Name</th>
+                    <th>Image</th>
+                    <th>Name</th>
                     <th>Action</th>
                 </tr>
                 <!--end::Table row-->
@@ -53,7 +54,7 @@
             serverSide: true,
             ajax: "{{ route('admin.category.data') }}",
             columnDefs: [{
-                targets: [0, 1, 2],
+                targets: [0, 1, 2, 3],
             }, ],
             lengthMenu: [
                 [10, 25, 50, 100, -1],
@@ -62,6 +63,9 @@
             columns: [
                 {
                     data: 'created_at',
+                },
+                {
+                    data: 'image'
                 },
                 {
                     data: 'name'

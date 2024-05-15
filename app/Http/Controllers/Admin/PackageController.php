@@ -8,7 +8,7 @@ use App\Utilities\Helpers;
 use Illuminate\Http\Request;
 use DataTables;
 
-class CategoryController extends Controller
+class PackageController extends Controller
 {
 
     public function index()

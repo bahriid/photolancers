@@ -83,20 +83,19 @@
                                 <span class="menu-title ms-5">Dashboard</span>
                             </span>
                         </a>
-
-                        <a href="{{ route('admin.category') }}"
-                           class="menu-item here show menu-accordion">
-                            <span class="menu-link">
-                                <span class="menu-title ms-5">Kategori Paket</span>
-                            </span>
-                        </a>
-
                         <a href="{{ route('admin.photographer') }}"
                            class="menu-item here show menu-accordion">
                             <span class="menu-link">
                                 <span class="menu-title ms-5">Photographers</span>
                             </span>
                         </a>
+                        <a href="{{ route('admin.category') }}"
+                           class="menu-item here show menu-accordion">
+                            <span class="menu-link">
+                                <span class="menu-title ms-5">Package Category</span>
+                            </span>
+                        </a>
+
                         <a href="{{ route('admin.photographer') }}"
                            class="menu-item here show menu-accordion">
                             <span class="menu-link">
@@ -178,7 +177,7 @@
                             <!--end::Menu separator-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5">
-                                <a href="account/overview.html" class="menu-link px-5">My Profile</a>
+                                <a href="#" class="menu-link px-5">My Profile</a>
                             </div>
 
                             <div class="menu-item px-5">
