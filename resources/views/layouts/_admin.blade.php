@@ -12,7 +12,7 @@
     <meta property="og:url" content="{{route('home')}}"/>
     <meta property="og:site_name" content="Photolancers by BahriID"/>
     <link rel="canonical" href="{{route('home')}}"/>
-    <link rel="shortcut icon" href="{{asset('admin/assets/media/logos/favicon.ico')}}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/imgs/template/favicon.svg')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>
     <link href="{{asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet"
           type="text/css"/>
@@ -55,13 +55,13 @@
              data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start"
              data-kt-drawer-toggle="#kt_aside_toggle">
             <!--begin::Brand-->
-            <div class="aside-logo flex-column-auto px-9 mb-9" id="kt_aside_logo">
+            <div class="aside-logo justify-content-center flex-column-auto px-9 mb-5" id="kt_aside_logo">
                 <!--begin::Logo-->
-                <a href="{{route('admin.dashboard')}}">
-                    <img alt="Logo" src="{{asset('admin/assets/media/logos/demo3.svg')}}"
-                         class="h-20px logo theme-light-show"/>
-                    <img alt="Logo" src="{{asset('admin/assets/media/logos/demo3-dark.svg')}}"
-                         class="h-20px logo theme-dark-show"/>
+                <a href="/">
+                    <img alt="Logo" src="{{ url('assets/imgs/template/logo.svg') }}"
+                         class="h-30px logo theme-light-show" />
+                    <img alt="Logo" src="{{ url('assets/imgs/template/logo.svg') }}"
+                         class="h-30px logo theme-dark-show" />
                 </a>
                 <!--end::Logo-->
             </div>
@@ -204,7 +204,7 @@
         <!--end::Aside-->
         @endif
         <!--begin::Wrapper-->
-        <div class="{{auth()->user()->role === 'admin' ? 'wrapper' : ''}} d-flex flex-column flex-row-fluid" id="kt_wrapper" style="padding-top: 50px !important;">
+        <div class="{{auth()->user()->role === 'admin' ? 'wrapper' : ''}} d-flex flex-column flex-row-fluid" id="kt_wrapper" style="{{auth()->user()->role === 'admin' ? '' : 'padding-top: 50px !important'}};">
             <!--begin::Header-->
             <div id="kt_header" class="header mt-0 mt-lg-0 pt-lg-0" data-kt-sticky="true" data-kt-sticky-name="header"
                  data-kt-sticky-offset="{lg: '300px'}">
@@ -248,8 +248,8 @@
                         @endif
                         <!--begin::Logo-->
                         <a href="{{route('admin.dashboard')}}" class="d-flex align-items-center">
-                            <img alt="Logo" src="{{asset('admin/assets/media/logos/demo3.svg')}}" class="theme-light-show h-20px"/>
-                            <img alt="Logo" src="{{asset('admin/assets/media/logos/demo3-dark.svg')}}" class="theme-dark-show h-20px"/>
+                            <img alt="Logo" src="{{asset('assets/imgs/template/logo.svg')}}" class="theme-light-show h-25px"/>
+                            <img alt="Logo" src="{{asset('assets/imgs/template/logo.svg')}}" class="theme-dark-show h-25px"/>
                         </a>
                         <!--end::Logo-->
                     </div>
