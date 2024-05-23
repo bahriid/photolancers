@@ -72,49 +72,6 @@ class PhotographerController extends Controller
         ]);
     }
 
-    public function store(Request $request)
-    {
-        try {
-            $validated = $request->validate([
-                'name' => 'required|string',
-            ]);
-
-            Category::create($validated);
-
-            return Helpers::successRedirect('admin.category', 'Successfully created Category');
-        } catch (\Exception $e) {
-            return Helpers::errorRedirect($e->getMessage());
-        }
-
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        try {
-            $validated = $request->validate([
-                'name' => 'required|string',
-            ]);
-
-            Category::where('id', $id)->update($validated);
-
-            return Helpers::successRedirect('admin.category', 'Successfully updated Category');
-        } catch (\Exception $e) {
-            return Helpers::errorRedirect($e->getMessage());
-        }
-    }
-
-    public function destroy($id)
-    {
-        try {
-            Category::where('id', $id)->delete();
-
-            return Helpers::successRedirect('admin.category', 'Successfully deleted Category');
-        } catch (\Exception $e) {
-            return Helpers::errorRedirect($e->getMessage());
-        }
-    }
-
     public function approved($id)
     {
         try {

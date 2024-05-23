@@ -49,14 +49,14 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
-        try {
-            $validated = $request->validate([
-                'category' => 'required|string',
-                'title' => 'required|string',
-                'description' => 'required|string',
-                'banner' => 'required|image|mimes:jpg,png,jpeg|max:1024',
-            ]);
+        $validated = $request->validate([
+            'category' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'banner' => 'required|image|mimes:jpg,png,jpeg|max:1024',
+        ]);
 
+        try {
             $image = Helpers::uploadToStorage($validated['banner'], $validated['title'], 'blog');
 
             Blog::query()->create([
@@ -76,14 +76,14 @@ class BlogController extends Controller
 
     public function update($id, Request $request)
     {
-        try {
-            $validated = $request->validate([
-                'category' => 'required|string',
-                'title' => 'required|string',
-                'description' => 'required|string',
-                'banner' => 'nullable|image|mimes:jpg,png,jpeg|max:1024',
-            ]);
+        $validated = $request->validate([
+            'category' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'banner' => 'nullable|image|mimes:jpg,png,jpeg|max:1024',
+        ]);
 
+        try {
             $blog = Blog::where('id', $id)->first();
 
             if ($validated['banner']) {

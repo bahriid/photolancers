@@ -15,21 +15,21 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
+        $passwordValidated = [];
+
+        if ($request->password) {
+            $passwordValidated = [
+                'password' => ['required', 'string', 'min:8', 'confirmed']
+            ];
+        }
+
+        $validated = $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email',
+            ] + $passwordValidated);
+
         try {
             \DB::beginTransaction();
-
-            $passwordValidated = [];
-
-            if ($request->password) {
-                $passwordValidated = [
-                    'password' => ['required', 'string', 'min:8', 'confirmed']
-                ];
-            }
-
-            $validated = $request->validate([
-                    'name' => 'required|string',
-                    'email' => 'required|email',
-                ] + $passwordValidated);
 
             $user = auth()->user();
 

@@ -80,25 +80,25 @@ class PackageController extends Controller
 
     public function store($id, Request $request)
     {
+        $validated = $request->validate([
+            'category_id' => 'required|integer|exists:categories,id',
+            'city_id' => 'required|integer',
+            'province_id' => 'required|integer',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'lenses' => 'required|string',
+            'camera' => 'required|string',
+            'media' => 'required|string',
+            'price' => 'required|numeric',
+            'discount' => 'integer',
+            'duration' => 'required|integer',
+            'edited_photo' => 'required|integer',
+            'raw_photo' => 'required|boolean',
+            'document' => 'required|array',
+        ]);
+
         try {
             $photographer = Photographer::find($id);
-
-            $validated = $request->validate([
-                'category_id' => 'required|integer|exists:categories,id',
-                'city_id' => 'required|integer',
-                'province_id' => 'required|integer',
-                'name' => 'required|string',
-                'description' => 'required|string',
-                'lenses' => 'required|string',
-                'camera' => 'required|string',
-                'media' => 'required|string',
-                'price' => 'required|numeric',
-                'discount' => 'integer',
-                'duration' => 'required|integer',
-                'edited_photo' => 'required|integer',
-                'raw_photo' => 'required|boolean',
-                'document' => 'required|array',
-            ]);
 
             $package = Package::query()->create([
                 'category_id' => $validated['category_id'],
@@ -132,25 +132,25 @@ class PackageController extends Controller
 
     public function update($id, Request $request)
     {
+        $validated = $request->validate([
+            'category_id' => 'required|integer|exists:categories,id',
+            'city_id' => 'required|integer',
+            'province_id' => 'required|integer',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'lenses' => 'required|string',
+            'camera' => 'required|string',
+            'media' => 'required|string',
+            'price' => 'required|numeric',
+            'discount' => 'integer',
+            'duration' => 'required|integer',
+            'edited_photo' => 'required|integer',
+            'raw_photo' => 'required|boolean',
+            'document' => 'required|array',
+        ]);
+
         try {
             $package = Package::find($id);
-
-            $validated = $request->validate([
-                'category_id' => 'required|integer|exists:categories,id',
-                'city_id' => 'required|integer',
-                'province_id' => 'required|integer',
-                'name' => 'required|string',
-                'description' => 'required|string',
-                'lenses' => 'required|string',
-                'camera' => 'required|string',
-                'media' => 'required|string',
-                'price' => 'required|numeric',
-                'discount' => 'integer',
-                'duration' => 'required|integer',
-                'edited_photo' => 'required|integer',
-                'raw_photo' => 'required|boolean',
-                'document' => 'required|array',
-            ]);
 
             $package->images()->delete();
 

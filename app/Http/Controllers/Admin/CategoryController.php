@@ -45,12 +45,12 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        try {
-            $validated = $request->validate([
-                'name' => 'required|string',
-                'image' => 'required|image|mimes:jpg,png,jpeg|max:1024',
-            ]);
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'image' => 'required|image|mimes:jpg,png,jpeg|max:1024',
+        ]);
 
+        try {
             $image = Helpers::uploadToStorage($validated['image'], $validated['name'], 'photo');
             $validated['image'] = $image;
 
@@ -70,13 +70,12 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:1024',
+        ]);
+
         try {
-
-            $validated = $request->validate([
-                'name' => 'required|string',
-                'image' => 'nullable|image|mimes:jpg,png,jpeg|max:1024',
-            ]);
-
             $category = Category::where('id',$id)->first();
 
             if ($validated['image']){
