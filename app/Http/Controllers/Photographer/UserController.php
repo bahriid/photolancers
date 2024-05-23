@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Photographer;
 
 use App\Http\Controllers\Controller;
 use App\Utilities\Helpers;

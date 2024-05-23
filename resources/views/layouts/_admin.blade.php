@@ -49,6 +49,7 @@
 <div class="d-flex flex-column flex-root">
     <!--begin::Page-->
     <div class="page d-flex flex-row flex-column-fluid">
+        @if(auth()->user()->role === 'admin')
         <div id="kt_aside" class="aside py-9" data-kt-drawer="true" data-kt-drawer-name="aside"
              data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
              data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start"
@@ -96,13 +97,13 @@
                             </span>
                         </a>
 
-                        <a href="{{ route('admin.photographer') }}"
+                        <a href="{{ route('admin.packages') }}"
                            class="menu-item here show menu-accordion">
                             <span class="menu-link">
                                 <span class="menu-title ms-5">Packages</span>
                             </span>
                         </a>
-                        <a href="{{ route('admin.photographer') }}"
+                        <a href="{{ route('admin.blog') }}"
                            class="menu-item here show menu-accordion">
                             <span class="menu-link">
                                 <span class="menu-title ms-5">Blog</span>
@@ -122,7 +123,7 @@
                     <div class="d-flex align-items-center">
                         <!--begin::Avatar-->
                         <div class="symbol symbol-circle symbol-40px">
-                            <img src="{{asset('admin/assets/media/avatars/300-1.jpg')}}" alt="photo"/>
+                            <img src="{{ App\Utilities\Helpers::getAvatar(auth()->user()->name) }}" alt="photo"/>
                         </div>
                         <!--end::Avatar-->
                         <!--begin::User info-->
@@ -156,14 +157,14 @@
                                 <div class="menu-content d-flex align-items-center px-3">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-50px me-5">
-                                        <img alt="Logo" src="{{asset('admin/assets/media/avatars/300-1.jpg')}}"/>
+                                        <img alt="Logo" src="{{ App\Utilities\Helpers::getAvatar(auth()->user()->name) }}"/>
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Username-->
                                     <div class="d-flex flex-column">
                                         <div class="fw-bold d-flex align-items-center fs-5">{{auth()->user()->name}}
                                             <span
-                                                class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span>
+                                                class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{auth()->user()->role}}</span>
                                         </div>
                                         <a href="#"
                                            class="fw-semibold text-muted text-hover-primary fs-7">{{auth()->user()->email}}</a>
@@ -177,7 +178,7 @@
                             <!--end::Menu separator-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5">
-                                <a href="#" class="menu-link px-5">My Profile</a>
+                                <a href="{{route('admin.profile')}}" class="menu-link px-5">My Profile</a>
                             </div>
 
                             <div class="menu-item px-5">
@@ -201,8 +202,9 @@
             <!--end::Footer-->
         </div>
         <!--end::Aside-->
+        @endif
         <!--begin::Wrapper-->
-        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+        <div class="{{auth()->user()->role === 'admin' ? 'wrapper' : ''}} d-flex flex-column flex-row-fluid" id="kt_wrapper" style="padding-top: 50px !important;">
             <!--begin::Header-->
             <div id="kt_header" class="header mt-0 mt-lg-0 pt-lg-0" data-kt-sticky="true" data-kt-sticky-name="header"
                  data-kt-sticky-offset="{lg: '300px'}">
@@ -234,6 +236,7 @@
                     <!--end::Page title=-->
                     <!--begin::Wrapper-->
                     <div class="d-flex d-lg-none align-items-center ms-n3 me-2">
+                        @if(auth()->user()->role === 'admin')
                         <!--begin::Aside mobile toggle-->
                         <div class="btn btn-icon btn-active-icon-primary" id="kt_aside_toggle">
                             <i class="ki-duotone ki-abstract-14 fs-1 mt-1">
@@ -242,6 +245,7 @@
                             </i>
                         </div>
                         <!--end::Aside mobile toggle-->
+                        @endif
                         <!--begin::Logo-->
                         <a href="{{route('admin.dashboard')}}" class="d-flex align-items-center">
                             <img alt="Logo" src="{{asset('admin/assets/media/logos/demo3.svg')}}" class="theme-light-show h-20px"/>

@@ -69,7 +69,7 @@ class PhotographerSeeder extends Seeder
                         'media' => $faker->name,
                         'edited_photo' => rand(10, 100),
                         'raw_photo' => rand(true, false),
-                        'notes' => $faker->realText,
+//                        'notes' => $faker->realText,
                         'province_id' => rand(1, 20),
                         'city_id' => rand(1, 20),
                     ]);

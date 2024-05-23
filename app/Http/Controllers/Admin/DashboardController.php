@@ -9,8 +9,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data = [];
-
-        return view('admin/dashboard/index')->with('data', $data);
+        if (auth()->user()->role ==='admin'){
+            return view('admin/dashboard/index');
+        }else{
+            return redirect()->route('cms.dashboard');
+        }
     }
 }

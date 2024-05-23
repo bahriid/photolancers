@@ -4,18 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Package;
 use App\Models\Photographer;
+use App\Models\User;
 use App\Utilities\Helpers;
 use Illuminate\Http\Request;
 use DataTables;
 
 class PhotographerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
-     */
     public function index()
     {
         return view('admin.photographer.index');
@@ -35,7 +32,7 @@ class PhotographerController extends Controller
             ->addColumn('image', function ($item) {
                 return '
                         <a href="#" class="symbol symbol-50px bg-secondary bg-opacity-25 rounded">
-							<img src="'.$item['photo'].'" alt="" data-kt-docs-datatable-subtable="template_image">
+							<img src="' . $item['photo'] . '" alt="" data-kt-docs-datatable-subtable="template_image">
 						</a>
                     ';
             })
@@ -43,23 +40,38 @@ class PhotographerController extends Controller
             ->make(true);
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
-     */
-    public function show($id)
+    public function show($id = null)
     {
-        return view('admin.photographer.detail')->with('photographer', Photographer::where('id', $id)->with('user', 'province', 'city')->first());
+        if ($id == null) {
+            $photographer = Photographer::with('user', 'province', 'city')->where('user_id', auth()->user()->id)->first();
+        }else{
+            $photographer = Photographer::with('user', 'province', 'city')->findOrFail($id);
+        }
+        $packageCount = Package::where('photographer_id', $id)->count();
+        $categoryCount = Package::where('photographer_id', $id)
+            ->distinct('category_id')
+            ->count('category_id');
+        return view('admin.photographer.detail')->with('data', [
+            'photographer' => $photographer,
+            'countPackage' => $packageCount,
+            'countCategory' => $categoryCount
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+    public function packages($id)
+    {
+        $photographer = Photographer::with('user', 'province', 'city')->findOrFail($id);
+        $packageCount = Package::where('photographer_id', $id)->count();
+        $categoryCount = Package::where('photographer_id', $id)
+            ->distinct('category_id')
+            ->count('category_id');
+        return view('admin.photographer.packages')->with('data', [
+            'photographer' => $photographer,
+            'countPackage' => $packageCount,
+            'countCategory' => $categoryCount
+        ]);
+    }
+
     public function store(Request $request)
     {
         try {
@@ -70,31 +82,13 @@ class PhotographerController extends Controller
             Category::create($validated);
 
             return Helpers::successRedirect('admin.category', 'Successfully created Category');
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return Helpers::errorRedirect($e->getMessage());
         }
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function edit(Request $request, $id)
-    {
-        return view('admin.category.detail')->with('category', Category::where('id', $id)->first());
 
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         try {
@@ -102,27 +96,55 @@ class PhotographerController extends Controller
                 'name' => 'required|string',
             ]);
 
-            Category::where('id',$id)->update($validated);
+            Category::where('id', $id)->update($validated);
 
             return Helpers::successRedirect('admin.category', 'Successfully updated Category');
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return Helpers::errorRedirect($e->getMessage());
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function destroy($id)
     {
         try {
-            Category::where('id',$id)->delete();
+            Category::where('id', $id)->delete();
 
             return Helpers::successRedirect('admin.category', 'Successfully deleted Category');
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
+            return Helpers::errorRedirect($e->getMessage());
+        }
+    }
+
+    public function approved($id)
+    {
+        try {
+            $photographer = Photographer::where('id', $id)->first();
+
+            if (!$photographer) {
+                return Helpers::errorRedirect('Something went wrong');
+            }
+
+            User::query()->where('id', $photographer->user_id)->update(['status' => 'active']);
+
+            return Helpers::successRedirect('admin.photographer.detail', 'Successfully approved photographer', ['id' => $id]);
+        } catch (\Exception $e) {
+            return Helpers::errorRedirect($e->getMessage());
+        }
+    }
+
+    public function rejected($id)
+    {
+        try {
+            $photographer = Photographer::where('id', $id)->first();
+
+            if (!$photographer) {
+                return Helpers::errorRedirect('Something went wrong');
+            }
+
+            User::query()->where('id', $photographer->user_id)->update(['status' => 'rejected']);
+
+            return Helpers::successRedirect('admin.photographer.detail', 'Successfully rejected photographer', ['id' => $id]);
+        } catch (\Exception $e) {
             return Helpers::errorRedirect($e->getMessage());
         }
     }

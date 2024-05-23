@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Photographer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -13,11 +13,6 @@ use DataTables;
 
 class PackageController extends Controller
 {
-
-    public function index()
-    {
-        return view('admin.packages.index');
-    }
 
     public function uploadImage(Request $request)
     {
@@ -41,17 +36,17 @@ class PackageController extends Controller
         }
     }
 
-    public function data(Request $request)
+    public function data()
     {
         $query = Package::select('packages.*')
             ->with(['category', 'photographer.user'])
-            ->when($request->photographer_id, fn($q) => $q->where('photographer_id', $request->photographer_id))
+            ->whereHas('photographer.user', fn($query) => $query->where('id', auth()->user()->id))
             ->orderBy('id', 'desc');
 
         return DataTables::eloquent($query)
             ->addColumn('action', function ($data) {
-                $url = route('admin.packages.edit', ['id' => $data['id']]);
-                $delete = route('admin.packages.destroy', ['id' => $data['id']]);
+                $url = route('cms.package.edit', ['id' => $data['id']]);
+                $delete = route('cms.package.destroy', ['id' => $data['id']]);
                 return '
                         <a href="' . $url . '" class="btn btn-sm btn-outline btn-outline-dashed btn-outline-success btn-active-light-success m-1">Lihat</a>
                         <a href="' . $delete . '"  class="btn btn-sm btn-outline btn-outline-dashed btn-outline-danger btn-active-light-danger">Hapus</a>
@@ -67,21 +62,21 @@ class PackageController extends Controller
             ->make(true);
     }
 
-    public function create($id)
+    public function create()
     {
         $categories = Category::all();
-        $photographer = Photographer::find($id);
-        return view('admin.packages.create')
+        $photographer = Photographer::where('user_id', auth()->user()->id)->first();
+        return view('cms.packages.create')
             ->with('data', [
                 'categories' => $categories,
                 'photographer' => $photographer,
             ]);
     }
 
-    public function store($id, Request $request)
+    public function store(Request $request)
     {
         try {
-            $photographer = Photographer::find($id);
+            $photographer = Photographer::where('user_id', auth()->user()->id)->first();
 
             $validated = $request->validate([
                 'category_id' => 'required|integer|exists:categories,id',
@@ -124,9 +119,9 @@ class PackageController extends Controller
                 $package->images()->save($image);
             }
 
-            return Helpers::successRedirect('admin.photographer.packages', 'Successfully create package', ['id' => $photographer->id]);
+            return Helpers::successRedirect('cms.package', 'Successfully create package');
         } catch (\Exception $e) {
-            return Helpers::errorRedirect('admin.photographer.packages.create', $e->getMessage(), ['id' => $photographer->id]);
+            return Helpers::errorRedirect('cms.package', $e->getMessage());
         }
     }
 
@@ -177,9 +172,9 @@ class PackageController extends Controller
                 $package->images()->save($image);
             }
 
-            return Helpers::successRedirect('admin.photographer.packages', 'Successfully update package', ['id' => $package->photographer_id]);
+            return Helpers::successRedirect('cms.package', 'Successfully update package');
         } catch (\Exception $e) {
-            return Helpers::errorRedirect('admin.photographer.packages.create', $e->getMessage(), ['id' => $package->photographer_id]);
+            return Helpers::errorRedirect('cms.package', $e->getMessage());
         }
     }
 
@@ -187,7 +182,7 @@ class PackageController extends Controller
     {
         $package = Package::query()->findOrFail($id);
         $categories = Category::all();
-        return view('admin.packages.detail')->with('data', [
+        return view('cms.packages.detail')->with('data', [
             'package' => $package,
             'categories' => $categories,
         ]);
@@ -197,13 +192,11 @@ class PackageController extends Controller
     {
         try {
             $package = Package::where('id', $id)->first();
-            $photographer_id = $package->photographer_id;
             $package->images()->delete();
             $package->delete();
-
-            return Helpers::successRedirect('admin.photographer.packages', 'Successfully delete package', ['id' => $photographer_id]);
+            return Helpers::successRedirect('cms.package', 'Successfully delete package');
         } catch (\Exception $e) {
-            return Helpers::errorRedirect('admin.photographer.packages.create', $e->getMessage(), ['id' => $photographer_id]);
+            return Helpers::errorRedirect('cms.package', $e->getMessage());
         }
     }
 }

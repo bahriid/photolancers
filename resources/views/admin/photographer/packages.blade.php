@@ -118,108 +118,112 @@
             <!--end::Details-->
             <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold justify-content-center">
                 <li class="nav-item mt-2">
-                    <a class="nav-link text-active-primary ms-0 me-10 py-5 active"
+                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
                        href="{{route('admin.photographer.detail', ['id' => $data['photographer']->id])}}">Overview</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
+                    <a class="nav-link text-active-primary ms-0 me-10 py-5 active"
                        href="{{route('admin.photographer.packages', ['id' => $data['photographer']->id])}}">My Packages</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link text-active-primary ms-0 me-10 py-5" href="#">Portofolio</a>
+                    <a class="nav-link text-active-primary ms-0 me-10 py-5" href="account/activity.html">Portofolio</a>
                 </li>
 
             </ul>
         </div>
     </div>
-    <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6 mb-10">
-        <!--begin::Icon-->
-        <i class="ki-duotone ki-information fs-2tx text-warning me-4">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-        </i>
-        <!--end::Icon-->
-        <!--begin::Wrapper-->
-        <div class="d-flex flex-stack flex-grow-1">
-            <!--begin::Content-->
-            <div class="fw-semibold">
-                <h4 class="text-gray-900 fw-bold">About me</h4>
-                <div class="fs-6 text-gray-700">
-                    {{$data['photographer']->headline}}
-                </div>
+    <div class="card">
+        <div class="card-header border-0 pt-6">
+            <div class="card-title">
+                <a type="button" class="btn btn-primary" href="{{ route('admin.photographer.packages.create', ['id'=> $data['photographer']->id]) }}">
+                    <span class="svg-icon svg-icon-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
+                                  transform="rotate(-90 11.364 20.364)" fill="black" />
+                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+                        </svg>
+                    </span>Create Package
+                </a>
             </div>
-            <!--end::Content-->
+            <div class="card-toolbar">
+            </div>
         </div>
+        <!--begin::Card body-->
+        <div class="card-body py-10">
+            <!--begin::Table-->
+            <table class="table align-middle table-row-dashed fs-6 gy-5 " id="table_packages">
+                <!--begin::Table head-->
+                <thead>
+                <!--begin::Table row-->
+                <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                    <th>Created At</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+                <!--end::Table row-->
+                </thead>
+                <!--end::Table head-->
+                <!--begin::Table body-->
+                <tbody class="fw-semibold text-gray-600">
+                </tbody>
+                <!--end::Table body-->
+            </table>
+            <!--end::Table-->
+        </div>
+        <!--end::Card body-->
     </div>
-    <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
-        <div class="card-header cursor-pointer">
-            <div class="card-title m-0">
-                <h3 class="fw-bold m-0">Profile Details</h3>
-            </div>
-            @if(auth()->user()->role != 'admin')
-                <a href="account/settings.html" class="btn btn-sm btn-primary align-self-center">Edit Profile</a>
-            @endif
-        </div>
-        <div class="card-body p-9">
-            <h4 class="mb-9">Personal Information</h4>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Date of Birth</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->date_of_birth}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Phone Number</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->phone}}</span>
-                </div>
-            </div>
-            <h4 class="mb-9">Address Information</h4>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Address</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->address}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Province</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->province->name}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">City</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->city->name}}</span>
-                </div>
-            </div>
-            <h4 class="mb-9">Social Media Information</h4>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Instagram</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->instagram}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Facebook</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->facebook}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Twitter</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->twitter}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Other</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->portofolio}}</span>
-                </div>
-            </div>
+@endsection
+@section('script')
+    <script src="{{ url('admin/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <script>
+        $("#table_packages").DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('admin.packages.data', ['id'=>$data['photographer']->id]) }}",
+            columnDefs: [{
+                targets: [0, 1, 2, 3, 4],
+                // width : '160px',
+            },],
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"],
+            ],
+            columns: [
+                {
+                    data: 'created_at',
+                },
+                {
+                    data: 'name'
+                },
+                {
+                    data: 'category.name'
+                },
+                {
+                    data: 'price'
+                },
+                {
+                    data: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+            ],
+            "dom": "<'row mb-2'" +
+                "<'col-sm-6 d-flex align-items-center justify-conten-start dt-toolbar'l>" +
+                "<'col-sm-6 d-flex align-items-center justify-content-end dt-toolbar'f>" +
+                ">" +
 
-        </div>
-    </div>
+                "<'table-responsive'tr>" +
+
+                "<'row'" +
+                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                ">"
+        });
+    </script>
+@endsection
+
+@section('style')
+    <link href="{{asset('admin/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css"/>
 @endsection

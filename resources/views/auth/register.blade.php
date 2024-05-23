@@ -13,6 +13,22 @@
                                 registered e-mail for further information and thanks for your interest to join The
                                 Photolancers!</p>
                         </div>
+                        @if ($message = Session::get('error'))
+                            <div
+                                class="alert alert-dismissible bg-danger d-flex flex-column align-items-center flex-sm-row">
+                                <div class="d-flex flex-column align-items-center text-light ">
+                                    <p class="m-0" style="color:#fff">{!! session('error') !!}</p>
+                                </div>
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                            <div
+                                class="alert alert-dismissible bg-danger d-flex flex-column align-items-center flex-sm-row">
+                                <div class="d-flex flex-column align-items-center text-light ">
+                                    <p class="m-0" style="color:#fff">Upss! Terjadi Kesalahan</p>
+                                </div>
+                            </div>
+                        @endif
                         <form class="login-register text-start mt-20 row" method="POST" enctype="multipart/form-data"
                               action="{{ route('register') }}">
                             @csrf
@@ -49,7 +65,8 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="form-label" for="input-4">Repeat Password *</label>
-                                    <input class="form-control" id="input-4" type="password" required="" name="password_confirmation"
+                                    <input class="form-control" id="input-4" type="password" required=""
+                                           name="password_confirmation"
                                            placeholder="*********">
                                     @error('password_confirmation')
                                     <p class="text-danger">{{ $message }}</p>
@@ -139,7 +156,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="form-label" for="input-15">Instagram</label>
-                                    <input class="form-control" id="input-15" type="text" required="" name="instagram"
+                                    <input class="form-control" id="input-15" type="text" name="instagram"
                                            placeholder="Your instagram link">
                                     @error('instagram')
                                     <p class="text-danger">{{ $message }}</p>
@@ -149,7 +166,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="form-label" for="input-16">Facebook</label>
-                                    <input class="form-control" id="input-16" type="text" required="" name="facebook"
+                                    <input class="form-control" id="input-16" type="text" name="facebook"
                                            placeholder="Your facebook link">
                                     @error('facebook')
                                     <p class="text-danger">{{ $message }}</p>
@@ -159,7 +176,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="form-label" for="input-17">Twitter</label>
-                                    <input class="form-control" id="input-17" type="text" required="" name="twitter"
+                                    <input class="form-control" id="input-17" type="text" name="twitter"
                                            placeholder="Your twitter link">
                                     @error('twitter')
                                     <p class="text-danger">{{ $message }}</p>
@@ -169,7 +186,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="form-label" for="input-18">Other Social Media</label>
-                                    <input class="form-control" id="input-18" type="text" required="" name="other"
+                                    <input class="form-control" id="input-18" type="text" name="other"
                                            placeholder="Your other social media link">
                                     @error('other')
                                     <p class="text-danger">{{ $message }}</p>
@@ -177,14 +194,7 @@
                                 </div>
                             </div>
 
-                            <div class="login_footer form-group d-flex justify-content-between">
-                                <label class="cb-container">
-                                    <input type="checkbox"><span
-                                        class="text-small">Agree our terms and policy</span><span
-                                        class="checkmark"></span>
-                                </label><a class="text-muted" href="/frontend/page-contact">Lean more</a>
-                            </div>
-                            <div class="form-group">
+                            <div class="form-group mt-5">
                                 <button class="btn btn-brand-1 hover-up w-100" type="submit" name="login">Submit &amp;
                                     Register
                                 </button>
@@ -215,17 +225,17 @@
             dateFormat: "Y-m-d",
         });
 
-        function getProvinces(){
+        function getProvinces() {
             axios.get(`{!! route('data.provinces') !!}`).then(({data: provinces}) => {
                 provinces.forEach(province => {
                     $('#province').append(new Option(province.name, province.id));
                 });
                 console.log(provinces)
-            }).catch(error=> {
+            }).catch(error => {
             })
         }
 
-        function getCities(event){
+        function getCities(event) {
             $('#city').html('<option disabled selected>Pilih Kabupaten/Kota ...</option>');
             const url = `{{ route('data.cities', ['id' => ':id']) }}`.replace(':id', event.value);
 
@@ -233,9 +243,10 @@
                 data.cities.forEach(city => {
                     $('#city').append(new Option(city.name, city.id));
                 });
-            }).catch(error=> {
+            }).catch(error => {
             })
         }
+
         getProvinces()
 
     </script>

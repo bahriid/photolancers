@@ -4,19 +4,15 @@
 @section('content')
     @include('layouts.notifications')
     <div class="card">
-        <div class="card-header border-0 pt-6">
+        <div class="card-header">
             <div class="card-title">
-                <a type="button" class="btn btn-primary" href="{{ route('admin.category.create') }}">
-                    <span class="svg-icon svg-icon-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
-                                  transform="rotate(-90 11.364 20.364)" fill="black" />
-                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-                        </svg>
-                    </span>Create Category
-                </a>
+                <h2>Category List</h2>
             </div>
             <div class="card-toolbar">
+                <a href="{{route('admin.category.create')}}" class="btn btn-primary me-2">
+                    <i class="las la-plus fs-2 me-2"></i>
+                    Create Category
+                </a>
             </div>
         </div>
         <!--begin::Card body-->

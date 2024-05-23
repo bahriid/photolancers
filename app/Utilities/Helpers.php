@@ -42,4 +42,15 @@ class Helpers
         } catch (\Throwable $th) {
         }
     }
+
+    public static function getAvatar($name)
+    {
+        $param = [
+            'background' => 'EBF4FF',
+            'color' => '7F9CF4',
+            'name' => Str::upper($name),
+        ];
+        $url = 'https://ui-avatars.com/api/?' . http_build_query($param);
+        return $url;
+    }
 }

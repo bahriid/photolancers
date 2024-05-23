@@ -31,8 +31,6 @@ return new class extends Migration
             $table->integer('edited_photo');
             $table->boolean('raw_photo');
 
-            $table->string('notes');
-
             $table->unsignedBigInteger('province_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->timestamps();

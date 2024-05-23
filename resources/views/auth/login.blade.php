@@ -10,6 +10,23 @@
                             <h2 class="mt-10 mb-5 text-brand-1">Member Login</h2>
                             <p class="font-sm text-muted mb-30">Access to all features. No credit card required.</p>
                         </div>
+
+                        @if ($message = Session::get('error'))
+                            <div
+                                class="alert alert-dismissible bg-danger d-flex flex-column align-items-center flex-sm-row">
+                                <div class="d-flex flex-column align-items-center text-light ">
+                                    <p class="m-0" style="color:#fff">{!! session('error') !!}</p>
+                                </div>
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                            <div
+                                class="alert alert-dismissible bg-danger d-flex flex-column align-items-center flex-sm-row">
+                                <div class="d-flex flex-column align-items-center text-light ">
+                                    <p class="m-0" style="color:#fff">Upss! Terjadi Kesalahan</p>
+                                </div>
+                            </div>
+                        @endif
                             <form method="POST" action="{{ route('login') }}" class="login-register text-start mt-20" >
                                 @csrf
                             <div class="form-group">

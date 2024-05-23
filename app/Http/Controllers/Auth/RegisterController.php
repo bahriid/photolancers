@@ -62,10 +62,10 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'province_id' => ['required', 'integer'],
             'city_id' => ['required', 'integer'],
-            'instagram' => ['required', 'string', 'string', 'max:255'],
-            'facebook' => ['required', 'string', 'string', 'max:255'],
-            'twitter' => ['required', 'string', 'string', 'max:255'],
-            'other' => ['required', 'string', 'string', 'max:255'],
+            'instagram' => ['nullable', 'string', 'string', 'max:255'],
+            'facebook' => ['nullable', 'string', 'string', 'max:255'],
+            'twitter' => ['nullable', 'string', 'string', 'max:255'],
+            'other' => ['nullable', 'string', 'string', 'max:255'],
         ]);
     }
 

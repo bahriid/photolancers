@@ -49,7 +49,8 @@
                                     <i class="ki-duotone ki-geolocation fs-4 me-1">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
-                                    </i>{{$data['photographer']->province->name}}, {{$data['photographer']->city->name}}</a>
+                                    </i>{{$data['photographer']->province->name}}, {{$data['photographer']->city->name}}
+                                </a>
                                 <a href="#" class="d-flex align-items-center text-gray-500 text-hover-primary mb-2">
                                     <i class="ki-duotone ki-sms fs-4">
                                         <span class="path1"></span>
@@ -60,13 +61,38 @@
                         </div>
                         <!--end::User-->
                         <!--begin::Actions-->
-                        <div class="d-flex my-4">
-                            @if($data['photographer']->user->status == 'waiting_approval')
-                                <a href="{{route('admin.photographer.reject', ['id' => $data['photographer']->id])}}"
-                                   class="btn btn-sm btn-danger me-2">Reject</a>
-                                <a href="{{route('admin.photographer.approve', ['id' => $data['photographer']->id])}}"
-                                   class="btn btn-sm btn-primary me-3">Approve</a>
-                            @endif
+                        <div class="d-flex mb-4">
+                            <!--begin::Menu-->
+                            <div class="me-0">
+                                <button
+                                    class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary menu-dropdown"
+                                    data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                    <i class="ki-solid ki-dots-horizontal fs-2x"></i></button>
+                                <div
+                                    class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px py-3"
+                                    data-kt-menu="true"
+                                    style="z-index: 107; position: fixed; inset: 0px 0px auto auto; margin: 0px; transform: translate(-80px, 220px);"
+                                    data-popper-placement="bottom-end">
+                                    <div class="menu-item px-3">
+                                        <a href="{{route('cms.profile')}}" class="menu-link px-3">
+                                            Profile
+                                        </a>
+                                    </div>
+                                    <div class="menu-item px-3">
+                                        <a href="{{ route('logout') }}"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                           class="menu-link px-3">
+                                            Sign Out
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--end::Menu 3-->
+                            </div>
+                            <!--end::Menu-->
                         </div>
                         <!--end::Actions-->
                     </div>
@@ -82,7 +108,8 @@
                                     class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                     <!--begin::Number-->
                                     <div class="d-flex align-items-center">
-                                        <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{$data['countPackage']}}">
+                                        <div class="fs-2 fw-bold" data-kt-countup="true"
+                                             data-kt-countup-value="{{$data['countPackage']}}">
                                             0
                                         </div>
                                     </div>
@@ -97,7 +124,8 @@
                                     class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                     <!--begin::Number-->
                                     <div class="d-flex align-items-center">
-                                        <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{$data['countCategory']}}">0
+                                        <div class="fs-2 fw-bold" data-kt-countup="true"
+                                             data-kt-countup-value="{{$data['countCategory']}}">0
                                         </div>
                                     </div>
                                     <!--end::Number-->
@@ -119,11 +147,11 @@
             <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold justify-content-center">
                 <li class="nav-item mt-2">
                     <a class="nav-link text-active-primary ms-0 me-10 py-5 active"
-                       href="{{route('admin.photographer.detail', ['id' => $data['photographer']->id])}}">Overview</a>
+                       href="{{route('cms.dashboard')}}">Overview</a>
                 </li>
                 <li class="nav-item mt-2">
                     <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                       href="{{route('admin.photographer.packages', ['id' => $data['photographer']->id])}}">My Packages</a>
+                       href="{{route('cms.package')}}">My Packages</a>
                 </li>
                 <li class="nav-item mt-2">
                     <a class="nav-link text-active-primary ms-0 me-10 py-5" href="#">Portofolio</a>
