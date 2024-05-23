@@ -7,7 +7,6 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Package;
 use App\Models\Photographer;
-use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
@@ -17,7 +16,9 @@ class LandingPageController extends Controller
         $data['categories'] = Category::withCount('packages')->get();
         $data['photographers'] = Photographer::with('user')->get()->take(8);
         $data['provinces'] = \Indonesia::allProvinces();
-        $data['packages'] = Package::get()->take(6);
+        $data['packages'] = Package::query()
+            ->with(['province', 'city', 'category'])
+            ->get()->take(6);
         $data['blogs'] = Blog::get()->take(6);
 
         return view('client/landing/index')->with('data', $data);

@@ -20,6 +20,7 @@ class PackageController extends Controller
         $data['categories'] = Category::withCount('packages')->get();
         $data['provinces'] = \Indonesia::allProvinces();
         $data['packages'] = Package::query()
+            ->with(['province', 'city', 'category'])
             ->when($request->category && $request->category != 'All', function ($query) use ($request) {
                 $query->where('category_id', $request->category);
             })
