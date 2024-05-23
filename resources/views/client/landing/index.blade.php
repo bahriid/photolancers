@@ -151,8 +151,8 @@
                             </div>
                             <div class="mt-40">
                                 <div class="wow animate__animated animate__fadeInUp"><a class="btn btn-default"
-                                                                                        href="jobs-grid.html">Search
-                                        Packages</a><a class="btn btn-link" href="page-about.html">Learn More</a></div>
+                                                                                        href="{{route('package.index')}}">Search
+                                        Packages</a></div>
                             </div>
                         </div>
                     </div>

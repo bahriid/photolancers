@@ -117,7 +117,7 @@
     <div class="container">
         <div class="row">
             <div class="footer-col-1 col-md-3 col-sm-12"><a href="{{route('home')}}">
-                    <img alt="jobBox" src="{{asset('assets/imgs/template/logo.svg')}}"></a>
+                    <img alt="Photolancers" src="{{asset('assets/imgs/template/logo.svg')}}"></a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">Photolancers - A Place for Photographic
                     Freelancers
                 </div>
@@ -151,7 +151,7 @@
         </div>
         <div class="footer-bottom mt-50">
             <div class="row">
-                <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright &copy; 2022. JobBox all right reserved</span>
+                <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright &copy; {{now()->format('Y')}}. Photolancers all right reserved</span>
                 </div>
                 <div class="col-md-6 text-md-end text-start">
                     <div class="footer-social"><a class="font-xs color-text-paragraph" href="#">Privacy Policy</a><a
