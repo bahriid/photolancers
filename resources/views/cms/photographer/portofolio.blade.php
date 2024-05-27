@@ -61,8 +61,7 @@
                         </div>
                         <!--end::User-->
                         <!--begin::Actions-->
-                        <div class="d-flex mb-4">
-                            <!--begin::Menu-->
+                        <div class="d-flex my-4">
                             <div class="me-0">
                                 <button
                                     class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary menu-dropdown"
@@ -90,14 +89,14 @@
                                             Sign Out
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
                                             @csrf
                                         </form>
                                     </div>
                                 </div>
                                 <!--end::Menu 3-->
                             </div>
-                            <!--end::Menu-->
                         </div>
                         <!--end::Actions-->
                     </div>
@@ -151,7 +150,7 @@
             <!--end::Details-->
             <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold justify-content-center">
                 <li class="nav-item mt-2">
-                    <a class="nav-link text-active-primary ms-0 me-10 py-5 active"
+                    <a class="nav-link text-active-primary ms-0 me-10 py-5"
                        href="{{route('cms.dashboard')}}">Overview</a>
                 </li>
                 <li class="nav-item mt-2">
@@ -159,97 +158,185 @@
                        href="{{route('cms.package')}}">My Packages</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link text-active-primary ms-0 me-10 py-5" href="{{route('cms.portofolio')}}">Portofolio</a>
+                    <a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="{{route('cms.portofolio')}}">Portofolio</a>
                 </li>
-
             </ul>
         </div>
     </div>
-    <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6 mb-10">
-        <!--begin::Icon-->
-        <i class="ki-duotone ki-information fs-2tx text-warning me-4">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-        </i>
-        <!--end::Icon-->
-        <!--begin::Wrapper-->
-        <div class="d-flex flex-stack flex-grow-1">
-            <!--begin::Content-->
-            <div class="fw-semibold">
-                <h4 class="text-gray-900 fw-bold">About me</h4>
-                <div class="fs-6 text-gray-700">
-                    {{$data['photographer']->headline}}
-                </div>
-            </div>
-            <!--end::Content-->
-        </div>
-    </div>
-    <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
-        <div class="card-header cursor-pointer">
-            <div class="card-title m-0">
-                <h3 class="fw-bold m-0">Profile Details</h3>
-            </div>
-        </div>
-        <div class="card-body p-9">
-            <h4 class="mb-9">Personal Information</h4>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Date of Birth</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->date_of_birth}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Phone Number</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->phone}}</span>
-                </div>
-            </div>
-            <h4 class="mb-9">Address Information</h4>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Address</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->address}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Province</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->province->name}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">City</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->city->name}}</span>
-                </div>
-            </div>
-            <h4 class="mb-9">Social Media Information</h4>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Instagram</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->instagram}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Facebook</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->facebook}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Twitter</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->twitter}}</span>
-                </div>
-            </div>
-            <div class="row mb-7">
-                <label class="col-lg-4 fw-semibold text-muted">Other</label>
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{$data['photographer']->portofolio}}</span>
-                </div>
-            </div>
 
+    <div class="card">
+        <div class="card-header border-0 pt-6">
+            <div class="card-title">
+
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+                    Launch demo modal
+                </button>
+            </div>
+            <div class="card-toolbar">
+            </div>
+        </div>
+        <!--begin::Card body-->
+        <div class="card-body py-10">
+            <!--begin::Table-->
+            <table class="table align-middle table-row-dashed fs-6 gy-5 " id="table_packages">
+                <!--begin::Table head-->
+                <thead>
+                <!--begin::Table row-->
+                <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                    <th>Created At</th>
+                    <th>Image</th>
+                    <th></th>
+                </tr>
+                <!--end::Table row-->
+                </thead>
+                <!--end::Table head-->
+                <!--begin::Table body-->
+                <tbody class="fw-semibold text-gray-600">
+                </tbody>
+                <!--end::Table body-->
+            </table>
+            <!--end::Table-->
+        </div>
+        <!--end::Card body-->
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="kt_modal_1">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('cms.portofolio.store') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Upload Your Portofolio</h3>
+
+                        <!--begin::Close-->
+                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                             aria-label="Close">
+                            <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span
+                                    class="path2"></span></i>
+                        </div>
+                        <!--end::Close-->
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="fv-row">
+                            <label class="form-label required">Images:</label>
+                            <!--begin::Dropzone-->
+                            <div class="dropzone" id="kt_dropzonejs_example_1">
+                                <!--begin::Message-->
+                                <div class="dz-message needsclick">
+                                    <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span
+                                            class="path2"></span></i>
+
+                                    <!--begin::Info-->
+                                    <div class="ms-4">
+                                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to
+                                            upload.</h3>
+                                        <span class="fs-7 fw-semibold text-gray-500">Upload up to 10 files</span>
+                                    </div>
+                                    <!--end::Info-->
+                                </div>
+                            </div>
+                            <!--end::Dropzone-->
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+@endsection
+@section('script')
+    <script src="{{ url('admin/assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <script>
+        $("#table_packages").DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('cms.portofolio.data') }}",
+            columnDefs: [{
+                targets: [0, 1, 2],
+                // width : '160px',
+            },],
+            lengthMenu: [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"],
+            ],
+            columns: [
+                {
+                    data: 'created_at',
+                },
+                {
+                    data: 'image'
+                },
+                {
+                    data: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+            ],
+            "dom": "<'row mb-2'" +
+                "<'col-sm-6 d-flex align-items-center justify-conten-start dt-toolbar'l>" +
+                "<'col-sm-6 d-flex align-items-center justify-content-end dt-toolbar'f>" +
+                ">" +
+
+                "<'table-responsive'tr>" +
+
+                "<'row'" +
+                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                ">"
+        });
+
+        var uploadedDocumentMap = {}
+        var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
+            url: "{{ route('cms.portofolio.image') }}", // Set the url for your upload script location
+            paramName: "file", // The name that will be used to transfer the file
+            maxFiles: 10,
+            maxFilesize: 10, // MB
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            addRemoveLinks: true,
+            success: function (file, response) {
+                $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
+                uploadedDocumentMap[file.name] = response.name
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                var name = ''
+                if (typeof file.file_name !== 'undefined') {
+                    name = file.file_name
+                } else {
+                    name = uploadedDocumentMap[file.name]
+                }
+                $('form').find('input[name="document[]"][value="' + name + '"]').remove()
+            },
+            init: function () {
+                @if(isset($project) && $project->document)
+                var files = {!! json_encode($project->document) !!}
+                for(
+                var i
+            in
+                files
+            )
+                {
+                    var file = files[i]
+                    this.options.addedfile.call(this, file)
+                    file.previewElement.classList.add('dz-complete')
+                    $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
+                }
+                @endif
+            }
+        });
+
+    </script>
+@endsection
+
+@section('style')
+    <link href="{{asset('admin/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet"
+          type="text/css"/>
 @endsection

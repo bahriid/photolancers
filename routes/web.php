@@ -57,6 +57,12 @@ Route::middleware(['auth', 'userRole'])->group(function () {
         Route::get('/profile/password', [UserCmsController::class, 'password'])->name('profile.password');
         Route::post('/profile/password', [UserCmsController::class, 'updatePassword'])->name('profile.password');
 
+        Route::get('/portofolio', [PhotographerCmsController::class, 'portofolio'])->name('portofolio');
+        Route::post('/portofolio', [PhotographerCmsController::class, 'store'])->name('portofolio.store');
+        Route::get('/portofolio/data', [PhotographerCmsController::class, 'portofolioData'])->name('portofolio.data');
+        Route::get('/portofolio/destroy/{id}', [PhotographerCmsController::class, 'destroy'])->name('portofolio.destroy');
+        Route::post('/portofolio/upload-image', [PhotographerCmsController::class, 'uploadImage'])->name('portofolio.image');
+
         Route::get('/package', [PhotographerCmsController::class, 'packages'])->name('package');
         Route::get('/package/create', [PackageCmsController::class, 'create'])->name('package.create');
         Route::get('/package/data', [PackageCmsController::class, 'data'])->name('package.data');
