@@ -7,7 +7,7 @@
                 <div class="banner-hero banner-image-single"><img src="{{asset('assets/imgs/page/candidates/img.png')}}"
                                                                   alt="jobbox"></div>
                 <div class="box-company-profile">
-                    <div class="image-compay"><img src="{{$data['photographer']->photos}}"
+                    <div class="image-compay"><img src="{{$data['photographer']->photo}}"
                                                    style="height:85px;width:85px;" alt="jobbox"></div>
                     <div class="row mt-10">
                         <div class="col-lg-8 col-md-12">
