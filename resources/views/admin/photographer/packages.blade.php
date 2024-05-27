@@ -181,7 +181,7 @@
         $("#table_packages").DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('admin.packages.data', ['id'=>$data['photographer']->id]) }}",
+            ajax: "{{ route('admin.packages.data', ['photographer_id'=> $data['photographer']->id]) }}",
             columnDefs: [{
                 targets: [0, 1, 2, 3, 4],
                 // width : '160px',
