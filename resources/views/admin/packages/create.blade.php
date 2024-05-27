@@ -110,8 +110,8 @@
                         <label class="required form-label">Raw Photo:</label>
                         <select class="form-select" name="raw_photo">
                             <option disabled selected>Choose Raw Photo</option>
-                            <option value="{{true}}">Yes</option>
-                            <option value="{{false}}">No</option>
+                            <option value="{{1}}">Yes</option>
+                            <option value="{{0}}">No</option>
                         </select>
                         @error('raw_photo')
                         <p class="text-danger">{{ $message }}</p>

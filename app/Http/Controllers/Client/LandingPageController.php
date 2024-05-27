@@ -14,7 +14,9 @@ class LandingPageController extends Controller
     {
 
         $data['categories'] = Category::withCount('packages')->get();
-        $data['photographers'] = Photographer::with('user')->get()->take(8);
+        $data['photographers'] = Photographer::with('user')
+            ->whereHas('user', fn ($query) => $query->where('status', 'active'))
+            ->get()->take(8);
         $data['provinces'] = \Indonesia::allProvinces();
         $data['packages'] = Package::query()
             ->with(['province', 'city', 'category'])
