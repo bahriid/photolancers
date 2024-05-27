@@ -265,7 +265,7 @@
                                     <div class="card-grid-2-image-left">
                                         <div class="card-grid-2-image-rd">
                                             <a href="{{route('photographer.detail', ['id'=>$photographer->id])}}">
-                                                <figure><img alt="jobBox" src="{{$photographer->photos}}"></figure>
+                                                <figure><img alt="jobBox" src="{{$photographer->photo}}"></figure>
                                             </a>
                                         </div>
                                         <div class="card-profile pt-10">
