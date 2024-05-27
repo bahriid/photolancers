@@ -11,7 +11,9 @@ class PackageController extends Controller
 {
     public function show($id)
     {
-        $data['package'] = Package::where('id',$id)->with('images')->first();
+        $data['package'] = Package::where('id',$id)
+            ->whereHas('photographer.user', fn($query) => $query->where('status', 'active'))
+            ->with('images')->first();
         return view('client/package/detail')->with('data', $data);
     }
 
@@ -20,6 +22,7 @@ class PackageController extends Controller
         $data['categories'] = Category::withCount('packages')->get();
         $data['provinces'] = \Indonesia::allProvinces();
         $data['packages'] = Package::query()
+            ->whereHas('photographer.user', fn($query) => $query->where('status', 'active'))
             ->with(['province', 'city', 'category'])
             ->when($request->category && $request->category != 'All', function ($query) use ($request) {
                 $query->where('category_id', $request->category);

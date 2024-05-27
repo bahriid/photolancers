@@ -14,7 +14,7 @@ class PhotographerController extends Controller
     {
         $data['photographer'] = Photographer::where('id', $id)->whereHas('user', fn($query) => $query->where('status', 'active'))
             ->with('images')->first();
-        $data['packages'] = Package::where('photographer_id', $id)->with('images')->paginate(5);
+        $data['packages'] = Package::where('photographer_id', $id)->whereHas('photographer.user', fn($query) => $query->where('status', 'active'))->with('images')->paginate(5);
         return view('client/photographer/detail')->with('data', $data);
     }
 
