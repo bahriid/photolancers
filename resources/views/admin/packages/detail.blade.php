@@ -130,7 +130,7 @@
                 <div class="row">
                     <div class="mb-10 col-12 col-lg-6 fv-row">
                         <label class="required form-label">Province:</label>
-                        <select class="form-select" name="province_id" id="province" onchange="getCities(this)">
+                        <select class="form-select" name="province_id" id="province" onchange="getCities(this.value)">
                             <option disabled selected>Choose Province</option>
                         </select>
                         @error('province_id')
@@ -301,7 +301,11 @@
 
                 if (selectedProvinceId) {
                     provinceSelect.val(selectedProvinceId).change(); // Trigger change to load cities
-                    getCities(selectedProvinceId, selectedCityId); // Load cities for the selected province
+                }
+
+                // Manually call getCities if selectedProvinceId is set
+                if (selectedProvinceId && selectedCityId) {
+                    getCities(selectedProvinceId, selectedCityId);
                 }
             }).catch(error => {
                 console.error(error);
@@ -310,6 +314,7 @@
 
         // Fetch the cities based on the selected province and set the selected city
         function getCities(provinceId, selectedCityId = null) {
+            console.info(provinceId)
             const citySelect = $('#city');
             citySelect.empty().append('<option disabled selected>Choose City...</option>');
             const url = `{{ route('data.cities', ['id' => ':id']) }}`.replace(':id', provinceId);
@@ -331,7 +336,6 @@
         $(document).ready(function () {
             const selectedProvinceId = {{ $data['package']['province_id'] }};
             const selectedCityId = {{ $data['package']['city_id'] }};
-
             getProvinces(selectedProvinceId, selectedCityId);
         });
     </script>

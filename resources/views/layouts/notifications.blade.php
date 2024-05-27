@@ -9,6 +9,9 @@
 	</span>
         <div class="d-flex flex-column align-items-center text-light ">
             <p class="m-0">Upss! Terjadi Kesalahan</p>
+{{--            @foreach($errors->all() as $error)--}}
+{{--                {{$error}}--}}
+{{--            @endforeach--}}
         </div>
     </div>
 @endif

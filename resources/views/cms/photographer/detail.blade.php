@@ -75,7 +75,12 @@
                                     data-popper-placement="bottom-end">
                                     <div class="menu-item px-3">
                                         <a href="{{route('cms.profile')}}" class="menu-link px-3">
-                                            Profile
+                                            Edit Profile
+                                        </a>
+                                    </div>
+                                    <div class="menu-item px-3">
+                                        <a href="{{route('cms.profile.password')}}" class="menu-link px-3">
+                                            Change Password
                                         </a>
                                     </div>
                                     <div class="menu-item px-3">
@@ -185,9 +190,6 @@
             <div class="card-title m-0">
                 <h3 class="fw-bold m-0">Profile Details</h3>
             </div>
-            @if(auth()->user()->role != 'admin')
-                <a href="account/settings.html" class="btn btn-sm btn-primary align-self-center">Edit Profile</a>
-            @endif
         </div>
         <div class="card-body p-9">
             <h4 class="mb-9">Personal Information</h4>

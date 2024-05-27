@@ -49,7 +49,8 @@
                                     <i class="ki-duotone ki-geolocation fs-4 me-1">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
-                                    </i>{{$data['photographer']->province->name}}, {{$data['photographer']->city->name}}</a>
+                                    </i>{{$data['photographer']->province->name}}, {{$data['photographer']->city->name}}
+                                </a>
                                 <a href="#" class="d-flex align-items-center text-gray-500 text-hover-primary mb-2">
                                     <i class="ki-duotone ki-sms fs-4">
                                         <span class="path1"></span>
@@ -73,7 +74,12 @@
                                     data-popper-placement="bottom-end">
                                     <div class="menu-item px-3">
                                         <a href="{{route('cms.profile')}}" class="menu-link px-3">
-                                            Profile
+                                            Edit Profile
+                                        </a>
+                                    </div>
+                                    <div class="menu-item px-3">
+                                        <a href="{{route('cms.profile.password')}}" class="menu-link px-3">
+                                            Change Password
                                         </a>
                                     </div>
                                     <div class="menu-item px-3">
@@ -83,7 +89,8 @@
                                             Sign Out
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
                                             @csrf
                                         </form>
                                     </div>
@@ -105,7 +112,8 @@
                                     class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                     <!--begin::Number-->
                                     <div class="d-flex align-items-center">
-                                        <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{$data['countPackage']}}">
+                                        <div class="fs-2 fw-bold" data-kt-countup="true"
+                                             data-kt-countup-value="{{$data['countPackage']}}">
                                             0
                                         </div>
                                     </div>
@@ -120,7 +128,8 @@
                                     class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                     <!--begin::Number-->
                                     <div class="d-flex align-items-center">
-                                        <div class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{$data['countCategory']}}">0
+                                        <div class="fs-2 fw-bold" data-kt-countup="true"
+                                             data-kt-countup-value="{{$data['countCategory']}}">0
                                         </div>
                                     </div>
                                     <!--end::Number-->
@@ -162,8 +171,8 @@
                     <span class="svg-icon svg-icon-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
-                                  transform="rotate(-90 11.364 20.364)" fill="black" />
-                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+                                  transform="rotate(-90 11.364 20.364)" fill="black"/>
+                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black"/>
                         </svg>
                     </span>Create Package
                 </a>
@@ -248,5 +257,6 @@
 @endsection
 
 @section('style')
-    <link href="{{asset('admin/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('admin/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet"
+          type="text/css"/>
 @endsection

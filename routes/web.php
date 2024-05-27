@@ -51,7 +51,12 @@ Route::middleware(['auth', 'userRole'])->group(function () {
 
     Route::middleware(['photographer'])->prefix('/cms')->name('cms.')->group(function () {
         Route::get('/', [PhotographerCmsController::class, 'index'])->name('dashboard');
-        Route::get('/profile', [UserCmsController::class, 'index'])->name('profile');
+
+        Route::get('/profile', [UserCmsController::class, 'edit'])->name('profile');
+        Route::post('/profile', [UserCmsController::class, 'update'])->name('profile');
+        Route::get('/profile/password', [UserCmsController::class, 'password'])->name('profile.password');
+        Route::post('/profile/password', [UserCmsController::class, 'updatePassword'])->name('profile.password');
+
         Route::get('/package', [PhotographerCmsController::class, 'packages'])->name('package');
         Route::get('/package/create', [PackageCmsController::class, 'create'])->name('package.create');
         Route::get('/package/data', [PackageCmsController::class, 'data'])->name('package.data');
