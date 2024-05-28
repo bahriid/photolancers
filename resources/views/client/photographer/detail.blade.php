@@ -69,14 +69,28 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-sm-12 col-12">
-
+                        <div class="sidebar-border">
+                            <h4 class="mb-10 text-center mb-10">Portofolio</h4>
+                            <div class="post-list-small">
+                                <div class="row justify-content-center">
+                                    @forelse($data['photographer']->images as $image)
+                                        <a href="{{$image->url}}" data-toggle="lightbox"
+                                           data-gallery="example-gallery" class="col-4">
+                                            <img src="{{$image->url}}" class="img-fluid">
+                                        </a>
+                                    @empty
+                                        <p class="text-center mt-100 mb-100">No image yet!</p>
+                                    @endforelse
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12 col-12 pl-40 pl-lg-15 mt-lg-30">
                         <div class="sidebar-border">
                             <h5 class="f-18 text-center">Instagram Feed</h5>
-                                <iframe style="height: 375px;"
-                                        src="{{$data['photographer']->instagram}}/embed"
-                                        frameborder="0" allowfullscreen></iframe>
+                            <iframe style="height: 375px;"
+                                    src="{{$data['photographer']->instagram}}/embed"
+                                    frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -166,4 +180,20 @@
             </div>
         </section>
     </main>
+@endsection
+
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+    <script>
+        const options = {
+            keyboard: true,
+            size: 'fullscreen'
+        };
+
+        document.querySelectorAll('.my-lightbox-toggle').forEach((el) => el.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lightbox = new Lightbox(el, options);
+            lightbox.show();
+        }));
+    </script>
 @endsection
