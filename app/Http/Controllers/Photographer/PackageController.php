@@ -8,8 +8,10 @@ use App\Models\Image;
 use App\Models\Package;
 use App\Models\Photographer;
 use App\Utilities\Helpers;
-use Illuminate\Http\Request;
 use DataTables;
+use Illuminate\Http\Request;
+use Exception;
+use Response;
 
 class PackageController extends Controller
 {
@@ -31,8 +33,8 @@ class PackageController extends Controller
                 'name' => $image,
                 'original_name' => $file->getClientOriginalName(),
             ]);
-        } catch (\Exception $e) {
-            return \Response::json('error', 400);
+        } catch (Exception $e) {
+            return Response::json('error', 400);
         }
     }
 
@@ -88,7 +90,7 @@ class PackageController extends Controller
             'discount' => 'integer',
             'duration' => 'required|integer',
             'edited_photo' => 'required|integer',
-            'raw_photo' => 'required|boolean',
+            'raw_photo' => 'required|string|in:true,false',
             'document' => 'required|array',
         ]);
 
@@ -108,7 +110,7 @@ class PackageController extends Controller
                 'discount' => $validated['discount'],
                 'duration' => $validated['duration'],
                 'edited_photo' => $validated['edited_photo'],
-                'raw_photo' => $validated['raw_photo'],
+                'raw_photo' => $validated['raw_photo'] == 'true',
                 'photographer_id' => $photographer->id,
             ]);
 
@@ -120,7 +122,7 @@ class PackageController extends Controller
             }
 
             return Helpers::successRedirect('cms.package', 'Successfully create package');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return Helpers::errorRedirect($e->getMessage());
         }
     }
@@ -173,7 +175,7 @@ class PackageController extends Controller
             }
 
             return Helpers::successRedirect('cms.package', 'Successfully update package');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return Helpers::errorRedirect('cms.package', $e->getMessage());
         }
     }
@@ -195,7 +197,7 @@ class PackageController extends Controller
             $package->images()->delete();
             $package->delete();
             return Helpers::successRedirect('cms.package', 'Successfully delete package');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return Helpers::errorRedirect('cms.package', $e->getMessage());
         }
     }

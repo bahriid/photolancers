@@ -91,6 +91,8 @@ Route::middleware(['auth', 'userRole'])->group(function () {
         Route::get('/photographer/{id}/packages', [PhotographerController::class, 'packages'])->name('photographer.packages');
         Route::get('/photographer/{id}/packages/create', [PackageController::class, 'create'])->name('photographer.packages.create');
         Route::post('/photographer/{id}/packages/store', [PackageController::class, 'store'])->name('photographer.packages.store');
+        Route::get('/photographer/{id}/portofolio', [PhotographerController::class, 'portofolio'])->name('photographer.portofolio');
+        Route::get('/photographer/{id}/portofolio/data', [PhotographerController::class, 'portofolioData'])->name('photographer.portofolio.data');
 
         Route::get('/packages', [PackageController::class, 'index'])->name('packages');
         Route::get('/packages/data', [PackageController::class, 'data'])->name('packages.data');

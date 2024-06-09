@@ -90,7 +90,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="input-7">Phone Number *</label>
                                     <input class="form-control" id="input-7" type="text" required="" name="phone"
-                                           placeholder="081212341234">
+                                           placeholder="6281212341234">
                                     @error('phone')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -111,6 +111,7 @@
                                     <label class="form-label" for="input-8">Your Photo *</label>
                                     <input class="form-control" id="input-8" type="file" required="" name="photo"
                                            placeholder="Fill your photo">
+                                    <p class="text-black">* Max 5mb</p>
                                     @error('photo')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -157,7 +158,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="input-15">Instagram</label>
                                     <input class="form-control" id="input-15" type="text" name="instagram"
-                                           placeholder="Your instagram link">
+                                           placeholder="https://www.instagram.com/your-username">
                                     @error('instagram')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -167,7 +168,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="input-16">Facebook</label>
                                     <input class="form-control" id="input-16" type="text" name="facebook"
-                                           placeholder="Your facebook link">
+                                           placeholder="https://www.facebook.com/your-username">
                                     @error('facebook')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -177,7 +178,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="input-17">Twitter</label>
                                     <input class="form-control" id="input-17" type="text" name="twitter"
-                                           placeholder="Your twitter link">
+                                           placeholder="https://x.com/your-username">
                                     @error('twitter')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror

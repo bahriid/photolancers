@@ -39,7 +39,8 @@
                         <h3>{{$data['package']->name}}</h3>
                     </div>
                     <div class="col-lg-4 col-md-12 text-lg-end">
-                        <a href="https://api.whatsapp.com/send?phone={{$data['package']->photographer->phone}}&text=Hello%20*{{$data['package']->photographer->user->name}}*%2C%20I%20want%20more%20info%20about%20the%20your%20photography%20package%20*{{$data['package']->name}}*" class="btn btn-apply-icon btn-apply btn-apply-big hover-up">Book now
+                        <a href="https://api.whatsapp.com/send?phone={{$data['package']->photographer->phone}}&text=Hello%20*{{$data['package']->photographer->user->name}}*%2C%20I%20want%20more%20info%20about%20the%20your%20photography%20package%20*{{$data['package']->name}}*"
+                           class="btn btn-apply-icon btn-apply btn-apply-big hover-up">Book now
                         </a>
                     </div>
                 </div>
@@ -124,20 +125,17 @@
                                             src="{{asset('assets/imgs/page/job-single/location.svg')}}" alt="jobBox">
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
-                                            class="text-description mb-10">Location</span><strong class="small-heading">Dallas,
-                                            {{$data['package']->province->name}}
-                                            , {{$data['package']->city->name}}</strong></div>
+                                            class="text-description mb-10">Location</span><strong
+                                            class="small-heading">{{$data['package']->city->name}}
+                                            , {{$data['package']->province->name}}</strong></div>
                                 </div>
                             </div>
                         </div>
                         <div class="content-single">
-                            {{$data['package']->description}}
+                            {!!$data['package']->description!!}
                             <br>
                             <br>
                             <br>
-                            Notes :
-                            <br>
-                            {{$data['package']->notes}}
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12 col-12 pl-40 pl-lg-15 mt-lg-30">

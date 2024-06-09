@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ChangeStatusUser;
 use App\Models\Category;
 use App\Models\Package;
 use App\Models\Photographer;
@@ -72,6 +73,40 @@ class PhotographerController extends Controller
         ]);
     }
 
+    public function portofolio($id)
+    {
+        $photographer = Photographer::with('user', 'province', 'city')->findOrFail($id);
+        $packageCount = Package::where('photographer_id', $id)->count();
+        $categoryCount = Package::where('photographer_id', $id)
+            ->distinct('category_id')
+            ->count('category_id');
+        return view('admin.photographer.portofolio')->with('data', [
+            'photographer' => $photographer,
+            'countPackage' => $packageCount,
+            'countCategory' => $categoryCount
+        ]);
+    }
+
+    public function portofolioData($id)
+    {
+        $photographer = Photographer::with('images')->where('id', $id)->first();
+        $query = $photographer->images();
+
+        return DataTables::eloquent($query)
+            ->addColumn('image', function ($data) {
+                return '
+                        <img src="' . $data['url'] . '" width="200" class="rounded">
+                    ';
+            })->addColumn('action', function ($data) {
+                $delete = route('cms.portofolio.destroy', ['id' => $data['id']]);
+                return '
+                        <a href="' . $delete . '"  class="btn btn-sm btn-outline btn-outline-dashed btn-outline-danger btn-active-light-danger">Hapus</a>
+                    ';
+            })
+            ->rawcolumns(['image', 'action'])
+            ->make(true);
+    }
+
     public function approved($id)
     {
         try {
@@ -83,6 +118,8 @@ class PhotographerController extends Controller
 
             User::query()->where('id', $photographer->user_id)->update(['status' => 'active']);
 
+            \Mail::to($photographer->user->email)->send(new ChangeStatusUser($photographer->user));
+
             return Helpers::successRedirect('admin.photographer.detail', 'Successfully approved photographer', ['id' => $id]);
         } catch (\Exception $e) {
             return Helpers::errorRedirect($e->getMessage());
@@ -92,13 +129,15 @@ class PhotographerController extends Controller
     public function rejected($id)
     {
         try {
-            $photographer = Photographer::where('id', $id)->first();
+            $photographer = Photographer::with('user')->where('id', $id)->first();
 
             if (!$photographer) {
                 return Helpers::errorRedirect('Something went wrong');
             }
 
             User::query()->where('id', $photographer->user_id)->update(['status' => 'rejected']);
+
+            \Mail::to($photographer->user->email)->send(new ChangeStatusUser($photographer->user));
 
             return Helpers::successRedirect('admin.photographer.detail', 'Successfully rejected photographer', ['id' => $id]);
         } catch (\Exception $e) {
