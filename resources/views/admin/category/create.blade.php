@@ -57,6 +57,7 @@
                         <!--end::Remove button-->
                     </div>
                     <!--end::Image input-->
+                    <p class="text-info" >* Max 1mb</p>
                     <p id="imageError" class="text-danger" style="display: none;"></p>
                     @error('image')
                     <p class="text-danger">{{ $message }}</p>
