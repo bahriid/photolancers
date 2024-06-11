@@ -111,7 +111,7 @@
                                     <label class="form-label" for="input-8">Your Photo *</label>
                                     <input class="form-control" id="input-8" type="file" required="" name="photo"
                                            placeholder="Fill your photo">
-                                    <p class="text-black">* Max 5mb</p>
+                                    <p class="text-black">* Max 1mb</p>
                                     @error('photo')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
