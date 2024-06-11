@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="card-body py-4">
-            <form method="POST" action="{{ route('admin.category.store') }}" enctype="multipart/form-data">
+            <form method="POST" id="categoryForm" action="{{ route('admin.category.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-10 mt-10 text-center">
                     <div class="image-input image-input-empty image-input-placeholder " data-kt-image-input="true" >
@@ -57,6 +57,7 @@
                         <!--end::Remove button-->
                     </div>
                     <!--end::Image input-->
+                    <p id="imageError" class="text-danger" style="display: none;"></p>
                     @error('image')
                     <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -88,4 +89,24 @@
             background-image: url('{{asset('admin/assets/media/svg/avatars/blank-dark.svg')}}');
         }
     </style>
+@endsection
+
+@section('scripts')
+    <script>
+        document.getElementById('categoryForm').addEventListener('submit', function(event) {
+            // Clear previous errors
+            document.getElementById('imageError').style.display = 'none';
+
+            // Check file size
+            var imageInput = document.getElementById('imageUpload');
+            if (imageInput.files.length > 0) {
+                var fileSize = imageInput.files[0].size / 1024; // Size in KB
+                if (fileSize > 1024) { // 1024 KB is 1MB
+                    event.preventDefault();
+                    document.getElementById('imageError').innerText = 'The image size must be less than 1MB.';
+                    document.getElementById('imageError').style.display = 'block';
+                }
+            }
+        });
+    </script>
 @endsection
