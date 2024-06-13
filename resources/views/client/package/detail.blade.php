@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="sidebar-text-info ml-10"><span
                                             class="text-description industry-icon mb-10">Duration</span><strong
-                                            class="small-heading"> {{round($data['package']->duration / 60)}}
+                                            class="small-heading"> {{$data['package']->duration}}
                                             Hours</strong></div>
                                 </div>
                                 <div class="col-md-6 d-flex mt-sm-15">

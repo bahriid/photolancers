@@ -9,7 +9,8 @@
                         <h3 class="wow animate__animated animate__fadeInUp"><span class="color-brand-2">22 Jobs</span>
                             Available Now</h3>
                         <div class="font-sm color-text-paragraph-2 mt-10 wow animate__animated animate__fadeInUp"
-                             data-wow-delay=".1s">Explore and secure the best photography deals, updated daily for fresh inspiration
+                             data-wow-delay=".1s">Explore and secure the best photography deals, updated daily for fresh
+                            inspiration
                         </div>
                         <div class="form-find text-start mt-40 wow animate__animated animate__fadeInUp"
                              data-wow-delay=".2s">
@@ -21,13 +22,14 @@
                                             @if(request()->get('category') == 'All')
                                                 selected="selected"
                                             @endif
-                                        >All Category</option>
+                                        >All Category
+                                        </option>
                                         @foreach($data['categories'] as $category)
                                             <option
                                                 value="{{$category->id}}"
                                                 @if(request()->get('category') == $category->id)
                                                     selected="selected"
-                                                    @endif
+                                                @endif
                                             >{{$category->name}}</option>
                                         @endforeach
                                     </select>
@@ -38,16 +40,18 @@
                                         @if(request()->get('province') == 'All')
                                             selected="selected"
                                         @endif
-                                    >All Province</option>
+                                    >All Province
+                                    </option>
                                     @foreach($data['provinces'] as $province)
                                         <option value="{{$province->id}}"
                                                 @if(request()->get('province') == $province->id)
                                                     selected="selected"
-                                                    @endif
+                                            @endif
                                         >{{$province->name}}</option>
                                     @endforeach
                                 </select>
-                                <input class="form-input input-keysearch mr-10" type="text" name="budget" value="{{request()->get('budget')}}"
+                                <input class="form-input input-keysearch mr-10" type="text" name="budget"
+                                       value="{{request()->get('budget')}}"
                                        placeholder="Your Budget... ">
                                 <button class="btn btn-default btn-find font-sm" type="submit"></button>
                             </form>
@@ -76,7 +80,9 @@
                                                 </div>
                                             </div>
                                             <div class="card-block-info">
-                                                <h5><a href="{{route('package.detail',['id'=>$package->id])}}">{{$package->name}}</a></h5>
+                                                <h5>
+                                                    <a href="{{route('package.detail',['id'=>$package->id])}}">{{$package->name}}</a>
+                                                </h5>
                                                 <div class="mt-5">
                                                     <span
                                                         class="card-location mr-15">{{$package->province->name}}, {{$package->city->name}}</span>
@@ -96,7 +102,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <p class="font-sm color-text-paragraph mt-20">{{\Illuminate\Support\Str::limit($package->description, 100, ' ...')}}</p>
+                                                <p class="font-sm color-text-paragraph mt-20">{!! \Illuminate\Support\Str::limit($package->description, 100, ' ...') !!}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -106,17 +112,17 @@
                         <div class="paginations">
                             {{ $data['packages']->links() }}
 
-{{--                            <ul class="pager">--}}
-{{--                                <li><a class="pager-prev" href="#"></a></li>--}}
-{{--                                <li><a class="pager-number" href="#">1</a></li>--}}
-{{--                                <li><a class="pager-number" href="#">2</a></li>--}}
-{{--                                <li><a class="pager-number" href="#">3</a></li>--}}
-{{--                                <li><a class="pager-number" href="#">4</a></li>--}}
-{{--                                <li><a class="pager-number" href="#">5</a></li>--}}
-{{--                                <li><a class="pager-number active" href="#">6</a></li>--}}
-{{--                                <li><a class="pager-number" href="#">7</a></li>--}}
-{{--                                <li><a class="pager-next" href="#"></a></li>--}}
-{{--                            </ul>--}}
+                            {{--                            <ul class="pager">--}}
+                            {{--                                <li><a class="pager-prev" href="#"></a></li>--}}
+                            {{--                                <li><a class="pager-number" href="#">1</a></li>--}}
+                            {{--                                <li><a class="pager-number" href="#">2</a></li>--}}
+                            {{--                                <li><a class="pager-number" href="#">3</a></li>--}}
+                            {{--                                <li><a class="pager-number" href="#">4</a></li>--}}
+                            {{--                                <li><a class="pager-number" href="#">5</a></li>--}}
+                            {{--                                <li><a class="pager-number active" href="#">6</a></li>--}}
+                            {{--                                <li><a class="pager-number" href="#">7</a></li>--}}
+                            {{--                                <li><a class="pager-next" href="#"></a></li>--}}
+                            {{--                            </ul>--}}
                         </div>
                     </div>
                 </div>
