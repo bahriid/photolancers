@@ -204,7 +204,7 @@
 
         var uploadedDocumentMap = {}
         var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
-            url: "{{ route('admin.packages.upload-image') }}", // Set the url for your upload script location
+            url: "{{ route('cms.package.upload-image') }}", // Set the url for your upload script location
             paramName: "file", // The name that will be used to transfer the file
             maxFiles: 10,
             maxFilesize: 10, // MB
