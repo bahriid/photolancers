@@ -67,6 +67,7 @@ Route::middleware(['auth', 'userRole'])->group(function () {
         Route::get('/package/create', [PackageCmsController::class, 'create'])->name('package.create');
         Route::get('/package/data', [PackageCmsController::class, 'data'])->name('package.data');
         Route::post('/package/store', [PackageCmsController::class, 'store'])->name('package.store');
+        Route::post('/package/upload-image', [PackageCmsController::class, 'uploadImage'])->name('package.upload-image');
         Route::get('/package/{id}', [PackageCmsController::class, 'edit'])->name('package.edit');
         Route::post('/package/{id}/update', [PackageCmsController::class, 'update'])->name('package.update');
         Route::get('/package/{id}/destroy', [PackageCmsController::class, 'destroy'])->name('package.destroy');
