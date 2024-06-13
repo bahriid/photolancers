@@ -159,7 +159,7 @@
                                         {{$data['package']->photographer->address}}
                                     </li>
                                     <li>Phone: {{$data['package']->photographer->phone}}</li>
-                                    <li>Email: contact@Evara.com</li>
+                                    <li>Email: {{$data['package']->photographer->user->email}}</li>
                                 </ul>
                             </div>
                         </div>
