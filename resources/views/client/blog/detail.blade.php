@@ -35,7 +35,7 @@
                                      src="{{$data['blog']->banner}}">
                             </div>
                             <div class="max-width-single mt-70">
-                                {{$data['blog']->description}}
+                                {!!$data['blog']->description!!}
                             </div>
                         </div>
                     </div>
