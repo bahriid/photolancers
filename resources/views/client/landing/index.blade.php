@@ -324,15 +324,15 @@
 
                                 <div class="swiper-slide">
                                     <div class="card-grid-3 hover-up wow animate__animated animate__fadeIn">
-                                        <div class="text-center card-grid-3-image"><a href="#">
+                                        <div class="text-center card-grid-3-image"><a href="{{route('blog.detail', ['slug' => $blog->slug])}}">
                                                 <figure><img alt="jobBox"
                                                              src="{{$blog->banner}}"></figure>
                                             </a></div>
                                         <div class="card-block-info">
                                             <div class="tags mb-15"><a class="btn btn-tag"
-                                                                       href="blog-grid.html">News</a></div>
-                                            <h5><a href="blog-details.html">{{$blog->title}}</a></h5>
-                                            <p class="mt-10 color-text-paragraph font-sm">{{\Illuminate\Support\Str::limit($blog->description, 100, ' ...')}}</p>
+                                                                       href="#">News</a></div>
+                                            <h5><a href="{{route('blog.detail', ['slug' => $blog->slug])}}">{{$blog->title}}</a></h5>
+                                            <p class="mt-10 color-text-paragraph font-sm">{!!\Illuminate\Support\Str::limit($blog->description, 100, ' ...')!!}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -343,7 +343,7 @@
                         <div class="swiper-button-prev"></div>
                     </div>
                     <div class="text-center">
-                        <a class="btn btn-brand-1 btn-icon-load mt--30 hover-up" href="blog-grid.html">Load More Posts</a>
+                        <a class="btn btn-brand-1 btn-icon-load mt--30 hover-up" href="{{route('blog.index')}}">Load More Posts</a>
                     </div>
                 </div>
             </div>
