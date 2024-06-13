@@ -142,7 +142,7 @@
                         <div class="sidebar-border">
                             <div class="sidebar-heading">
                                 <div class="avatar-sidebar">
-                                    <figure><img alt="jobBox" src="{{$data['package']->photographer->photos}}">
+                                    <figure><img alt="jobBox" src="{{$data['package']->photographer->photo}}">
                                     </figure>
                                     <div class="sidebar-info"><span
                                             class="sidebar-company">{{\Illuminate\Support\Str::limit($data['package']->photographer->user->name, 13)}}</span><span
