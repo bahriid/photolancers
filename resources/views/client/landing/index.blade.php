@@ -20,13 +20,15 @@
                                 <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
                                     <form action="{{route('package.index')}}">
                                         <div class="box-industry">
-                                            <select class="form-input mr-10 select-active input-industry" name="category">
+                                            <select class="form-input mr-10 select-active input-industry"
+                                                    name="category">
                                                 <option
                                                     value="All"
                                                     @if(request()->get('category') == '')
                                                         selected="selected"
                                                     @endif
-                                                >All Category</option>
+                                                >All Category
+                                                </option>
                                                 @foreach($data['categories'] as $category)
                                                     <option
                                                         value="{{$category->id}}"
@@ -43,7 +45,8 @@
                                                 @if(request()->get('province') == '')
                                                     selected="selected"
                                                 @endif
-                                            >All Province</option>
+                                            >All Province
+                                            </option>
                                             @foreach($data['provinces'] as $province)
                                                 <option value="{{$province->id}}"
                                                         @if(request()->get('province') == $province->id)
@@ -223,30 +226,36 @@
                                         </div>
                                     </div>
                                     <div class="card-block-info">
-                                        <h5><a href="{{route('package.detail', ['id'=>$package->id])}}">{{$package->name}}</a></h5>
+                                        <h5>
+                                            <a href="{{route('package.detail', ['id'=>$package->id])}}">{{$package->name}}</a>
+                                        </h5>
                                         <div class="mt-5">
-                                            <span class="card-location mr-15">{{$package->province->name}}, {{$package->city->name}}</span>
+                                            <span
+                                                class="card-location mr-15">{{$package->province->name}}, {{$package->city->name}}</span>
                                         </div>
                                         <div class="card-2-bottom mt-20">
                                             <div class="row">
                                                 <div class="col-xl-7 col-md-7 mb-2">
-                                                    <a class="btn btn-tags-sm mr-5" href="{{route('package.index', ['category' => $package->category_id ])}}">{{$package->category->name}}</a>
+                                                    <a class="btn btn-tags-sm mr-5"
+                                                       href="{{route('package.index', ['category' => $package->category_id ])}}">{{$package->category->name}}</a>
                                                 </div>
                                                 <div class="col-xl-5 col-md-5 text-lg-end">
                                                     <span class="card-text-price">Rp. {{number_format($package->price - ($package->price * ($package->discount/100)))}}
-                                                    <span class="card-text-price" style="color: red;font-size: 10px;text-decoration: line-through;">Rp. {{number_format($package->price)}}</span>
+                                                    <span class="card-text-price"
+                                                          style="color: red;font-size: 10px;text-decoration: line-through;">Rp. {{number_format($package->price)}}</span>
                                                     </span>
                                                     <span class="text-muted">/ Session</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <p class="font-sm color-text-paragraph mt-20">{{\Illuminate\Support\Str::limit($package->description, 100, ' ...')}}</p>
+                                        <p class="font-sm color-text-paragraph mt-20">{!! \Illuminate\Support\Str::limit($package->description, 100, ' ...') !!}</p>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                    <div class="text-center mt-10"><a class="btn btn-brand-1 btn-icon-more hover-up" href="{{route('package.index')}}">See more </a></div>
+                    <div class="text-center mt-10"><a class="btn btn-brand-1 btn-icon-more hover-up"
+                                                      href="{{route('package.index')}}">See more </a></div>
                 </div>
             </div>
         </section>
@@ -281,16 +290,20 @@
                                         <div class="card-2-bottom card-2-bottom-candidate mt-30">
                                             <div class="text-center">
                                                 @if($photographer->facebook)
-                                                    <a class="btn btn-tags-sm mb-10 mr-5" href="{{$photographer->facebook}}">Facebook</a>
+                                                    <a class="btn btn-tags-sm mb-10 mr-5"
+                                                       href="{{$photographer->facebook}}">Facebook</a>
                                                 @endif
                                                 @if($photographer->instagram)
-                                                    <a class="btn btn-tags-sm mb-10 mr-5" href="{{$photographer->instagram}}">Instagram</a>
+                                                    <a class="btn btn-tags-sm mb-10 mr-5"
+                                                       href="{{$photographer->instagram}}">Instagram</a>
                                                 @endif
                                                 @if($photographer->twitter)
-                                                    <a class="btn btn-tags-sm mb-10 mr-5" href="{{$photographer->twitter}}">Twitter</a>
+                                                    <a class="btn btn-tags-sm mb-10 mr-5"
+                                                       href="{{$photographer->twitter}}">Twitter</a>
                                                 @endif
                                                 @if($photographer->portofolio)
-                                                    <a class="btn btn-tags-sm mb-10 mr-5" href="{{$photographer->portofolio}}">Portofolio</a>
+                                                    <a class="btn btn-tags-sm mb-10 mr-5"
+                                                       href="{{$photographer->portofolio}}">Portofolio</a>
                                                 @endif
                                             </div>
                                         </div>
@@ -301,7 +314,8 @@
                     </div>
                     <div class="row mt-40 mb-60">
                         <div class="col-lg-12">
-                            <div class="text-center"><a class="btn btn-brand-1 btn-icon-load mt--30 hover-up" href="{{route('photographer.index')}}">See More</a></div>
+                            <div class="text-center"><a class="btn btn-brand-1 btn-icon-load mt--30 hover-up"
+                                                        href="{{route('photographer.index')}}">See More</a></div>
                         </div>
                     </div>
                 </div>
@@ -322,20 +336,23 @@
                             <div class="swiper-wrapper pb-70 pt-5">
                                 @foreach($data['blogs'] as $blog)
 
-                                <div class="swiper-slide">
-                                    <div class="card-grid-3 hover-up wow animate__animated animate__fadeIn">
-                                        <div class="text-center card-grid-3-image"><a href="{{route('blog.detail', ['slug' => $blog->slug])}}">
-                                                <figure><img alt="jobBox"
-                                                             src="{{$blog->banner}}"></figure>
-                                            </a></div>
-                                        <div class="card-block-info">
-                                            <div class="tags mb-15"><a class="btn btn-tag"
-                                                                       href="#">News</a></div>
-                                            <h5><a href="{{route('blog.detail', ['slug' => $blog->slug])}}">{{$blog->title}}</a></h5>
-                                            <p class="mt-10 color-text-paragraph font-sm">{!!\Illuminate\Support\Str::limit($blog->description, 100, ' ...')!!}</p>
+                                    <div class="swiper-slide">
+                                        <div class="card-grid-3 hover-up wow animate__animated animate__fadeIn">
+                                            <div class="text-center card-grid-3-image"><a
+                                                    href="{{route('blog.detail', ['slug' => $blog->slug])}}">
+                                                    <figure><img alt="jobBox"
+                                                                 src="{{$blog->banner}}"></figure>
+                                                </a></div>
+                                            <div class="card-block-info">
+                                                <div class="tags mb-15"><a class="btn btn-tag"
+                                                                           href="#">News</a></div>
+                                                <h5>
+                                                    <a href="{{route('blog.detail', ['slug' => $blog->slug])}}">{{$blog->title}}</a>
+                                                </h5>
+                                                <p class="mt-10 color-text-paragraph font-sm">{!!\Illuminate\Support\Str::limit($blog->description, 100, ' ...')!!}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -343,7 +360,8 @@
                         <div class="swiper-button-prev"></div>
                     </div>
                     <div class="text-center">
-                        <a class="btn btn-brand-1 btn-icon-load mt--30 hover-up" href="{{route('blog.index')}}">Load More Posts</a>
+                        <a class="btn btn-brand-1 btn-icon-load mt--30 hover-up" href="{{route('blog.index')}}">Load
+                            More Posts</a>
                     </div>
                 </div>
             </div>
