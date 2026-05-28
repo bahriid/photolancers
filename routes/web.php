@@ -14,6 +14,7 @@ use App\Http\Controllers\Client\PackageController as PackageClientController;
 use App\Http\Controllers\Client\BlogController as BlogClientController;
 use App\Http\Controllers\Client\LandingPageController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\HealthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Docker healthcheck — invokable controller (route:cache-safe, no closure).
+Route::get('/up', HealthController::class)->name('health');
+
 Auth::routes();
 
 
