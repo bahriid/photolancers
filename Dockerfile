@@ -38,9 +38,11 @@ COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist \
     --no-interaction --ignore-platform-reqs
 
-# npm deps next
-COPY package.json package-lock.json ./
-RUN npm ci --no-audit --no-fund
+# npm deps next. This repo has no package-lock.json, so glob+npm-install
+# instead of npm-ci. (Newer apps with a lockfile use the template's strict
+# `npm ci`.)
+COPY package*.json ./
+RUN npm install --no-audit --no-fund
 
 # Full source needed: vite.config + tsconfig + resources + public + any
 # component config (components.json, etc.). Cheaper than enumerating.
