@@ -53,9 +53,9 @@ Route::middleware(['auth', 'userRole'])->group(function () {
         Route::get('/', [PhotographerCmsController::class, 'index'])->name('dashboard');
 
         Route::get('/profile', [UserCmsController::class, 'edit'])->name('profile');
-        Route::post('/profile', [UserCmsController::class, 'update'])->name('profile');
+        Route::post('/profile', [UserCmsController::class, 'update'])->name('profile.update');
         Route::get('/profile/password', [UserCmsController::class, 'password'])->name('profile.password');
-        Route::post('/profile/password', [UserCmsController::class, 'updatePassword'])->name('profile.password');
+        Route::post('/profile/password', [UserCmsController::class, 'updatePassword'])->name('profile.password.update');
 
         Route::get('/portofolio', [PhotographerCmsController::class, 'portofolio'])->name('portofolio');
         Route::post('/portofolio', [PhotographerCmsController::class, 'store'])->name('portofolio.store');
