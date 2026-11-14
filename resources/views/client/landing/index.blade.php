@@ -388,6 +388,5 @@
                 </div>
             </div>
         </section>
-        <script src="assets/js/plugins/counterup.js"></script>
     </main>
 @endsection

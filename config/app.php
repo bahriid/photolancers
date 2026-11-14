@@ -31,6 +31,13 @@ return [
     'env' => env('APP_ENV', 'production'),
 
     /*
+    | Demo mode shows one-click demo account buttons on the login page.
+    | Only for the public portfolio demo, never a real deployment.
+    */
+
+    'demo_mode' => (bool) env('DEMO_MODE', false),
+
+    /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
     |--------------------------------------------------------------------------

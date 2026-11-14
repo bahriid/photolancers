@@ -53,6 +53,22 @@
                             </div>
                             <div class="text-muted text-center">Don't have an Account? <a href="{{route('register')}}">Sign up</a></div>
                         </form>
+
+                        @if (config('app.demo_mode'))
+                            <div class="mt-20 p-3 text-center" style="border: 1px dashed #c8d1e6; border-radius: 8px;">
+                                <p class="font-sm color-text-mutted mb-10">Try the demo, no sign-up needed</p>
+                                @foreach (['Photographer' => 'raka@photolancers.id', 'Admin' => 'admin@gmail.com'] as $label => $email)
+                                    <button type="button" class="btn btn-border demo-login mx-1" data-email="{{ $email }}">{{ $label }}</button>
+                                @endforeach
+                            </div>
+                            <script>
+                                document.querySelectorAll('.demo-login').forEach((button) => button.addEventListener('click', () => {
+                                    document.getElementById('input-1').value = button.dataset.email;
+                                    document.getElementById('input-4').value = 'password';
+                                    document.getElementById('input-1').form.submit();
+                                }));
+                            </script>
+                        @endif
                     </div>
                     <div class="img-1 d-none d-lg-block"><img class="shape-1" src="assets/imgs/page/login-register/img-4.svg" alt="JobBox"></div>
                     <div class="img-2"><img src="assets/imgs/page/login-register/img-3.svg" alt="JobBox"></div>
