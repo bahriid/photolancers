@@ -62,7 +62,7 @@ class DemoSeeder extends Seeder
             'headline' => 'Semarang photographer for birthdays, family days and lamaran. Fun, relaxed and fast delivery.'],
     ];
 
-    /** @var array<string, array<int, array{0: string, 1: int, 2: int, 3: int, 4: string}>> category => [name, price, minutes, edited photos, description] */
+    /** @var array<string, array<int, array{0: string, 1: int, 2: int, 3: int, 4: string}>> category => [name, price, minutes, edited photos, description] (stored in hours, the unit the app shows) */
     private const PACKAGES = [
         'Wedding' => [['Akad & Resepsi Full Day', 18500000, 600, 400, 'Two photographers from preparation to the last guest, plus a 40-page album.'], ['Intimate Wedding', 7500000, 240, 150, 'For weddings under 100 guests: ceremony, family photos and dinner.']],
         'Pre-Wedding' => [['Pre-Wedding City Story', 4500000, 240, 60, 'Two locations in the city, outfit change, and a 1-minute teaser video.'], ['Pre-Wedding Sunrise Session', 3500000, 180, 40, 'Golden-hour session at one scenic location.']],
@@ -127,7 +127,7 @@ class DemoSeeder extends Seeder
                         'description' => $description,
                         'price' => $price,
                         'discount' => [0, 10, 15, 0, 20][($i + $n) % 5],
-                        'duration' => $minutes,
+                        'duration' => (int) ceil($minutes / 60),
                         'camera' => ['Sony A7 IV', 'Canon EOS R6 Mark II', 'Nikon Z6 II', 'Fujifilm X-T5'][$i % 4],
                         'lenses' => ['24-70mm f/2.8 and 85mm f/1.8', '35mm f/1.4 and 70-200mm f/2.8', '50mm f/1.2', '16-35mm f/4 and 90mm macro'][($i + $n) % 4],
                         'media' => ['Google Drive link', 'Google Drive + printed album', 'Flashdisk + 10 printed 4R photos'][$n % 3],
